@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <body data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="/" data-include-products="false" class="u-body u-clearfix u-palette-1-light-2 u-xl-mode" data-lang="it">
+        <style> body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 18px;
+        }
+        .button-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 15px 20px;
+          width: 100%;
+          max-width: 500px;
+        }
+        .button-grid a {
+          display: block;
+          padding: 12px 6px;
+          text-align: center;
+          color: white;
+          background-color: #BF8F00;
+          text-decoration: none;
+          border-radius: 80px;
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .button-grid a:hover {
+          background-color: #00b300;
+          color: white;
+        }
+        .tutti_i_canti {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 15px 20px;
+          width: 100%;
+          max-width: 500px;
+        }
+        .tutti_i_canti a {
+          display: block;
+          padding: 10px 6px;
+          text-align: center;
+          color: white;
+          background-color: #AA0000;
+          text-decoration: none;
+          border-radius: 112px;
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .tutti_i_canti a:hover {
+          background-color: #00b300;
+          color: white;
+        }
+        .numeri {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 115px 20px;
+          width: 100%;
+          max-width: 500px;
+        }
+        .numeri a {
+          display: block;
+          padding: 12px 6px;
+          text-align: center;
+          color: white;
+          background-color: #AA0000;
+          text-decoration: none;
+          border-radius: 80px;
+          font-size: 16px;
+          font-weight: normal;
+        }
+        .numeri a:hover {
+          background-color: #00b300;
+          color: white;
+        }
+
+.a-disabled {
+  color: #A0A0A0 !important;
+}
+
+#textbox {
+  width: 310px;
+  margin: 0 auto;
+  border: 0px solid #FFFFFF;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#controlloTesto {
+  text-align: left !important;
+}
+
+
+        </style>
+<meta charset="UTF-8">
+<center>
+  <span style="color:#BF8F00">
+  <h2>Chiesa San Biagio<br>Monza</h2></span>
+  <div id="data_e_ora"></div>
+  <div class="button-grid" id="programma"></div>
+  <div id="contenuto"></div>
+
+<script>
+
+fetch("/cantiSB/config/config.txt?nocache=" + Date.now())
+  .then(response => response.text())
+  .then(text => {
+    const config = text.split(/\r?\n/);
+    const cfg = parseConfigRiga1(config[0]);
+    if (isValida(cfg.giorno, cfg.mese, cfg.anno, cfg.ora, cfg.minuti)) {
+        // OK → procedo
+        caricaconst(config);
+    }
+  })
+
+function confrontagiorno (config)
+{
+    const dati = config[0].split(" ");
+
+    const giorno = dati[0];          // "23"
+    const mese = dati[1];            // "agosto"
+    const anno = dati[2];            // "2026"
+    const oraMinuti = dati[4];       // "10" oppure "10:45"
+    const oggi = new Date();
+
+    let ora = "10";
+    let minuti = "00";
+
+    if (oraMinuti.includes(":")) {
+        const [h, m] = oraMinuti.split(":");
+        ora = h;
+        minuti = m;
+    } else {
+        ora = oraMinuti;
+        minuti = "00";
+    }
+  }
+
+function parseConfigRiga1(riga) 
+{
+
+    const parti = riga.toLowerCase().split(" ");
+
+    const giorno = parseInt(parti[0]);
+    const mesi = {"gennaio": 0, "febbraio": 1, "marzo": 2, "aprile": 3, "maggio": 4, "giugno": 5,
+                  "luglio": 6, "agosto": 7, "settembre": 8, "ottobre": 9, "novembre": 10, "dicembre": 11};
+    const mese = mesi[parti[1]];
+    const anno = parseInt(parti[2]);
+
+    const oraMinuti = parti[4]; // "10" oppure "10:45"
+
+    let ora = 0;
+    let minuti = 0;
+
+    if (oraMinuti.includes(":")) {
+        const [h, m] = oraMinuti.split(":");
+        ora = parseInt(h);
+        minuti = parseInt(m);
+    } else {
+        ora = parseInt(oraMinuti);
+        minuti = 0;
+    }
+
+    return { giorno, mese, anno, ora, minuti };
+}
+
+// ------------------------------
+// FUNZIONE DI VALIDAZIONE
+// Restituisce true se:
+// - adesso < data costante
+// - adesso = data costante
+// - adesso > data costante ma entro le 03:00 del giorno successivo
+// ------------------------------
+function isValida(giorno, mese, anno, ora, minuti) 
+{
+
+    const dataCostante = new Date(anno, mese, giorno, ora, minuti);
+    const adesso = new Date();
+
+    const limite = new Date(anno, mese, giorno, ora, minuti);
+    limite.setDate(limite.getDate() + 1);  // giorno dopo
+    limite.setHours(3, 0, 0, 0);           // 03:00 precise
+    if (adesso <= dataCostante) return true;
+    if (adesso > dataCostante && adesso <= limite) return true;
+
+    return false;
+}
+
+function caricaconst(config) 
+{
+  fetch("costanti.txt")
+  .then(response => response.text())
+  .then(text => {
+    const costanti = text.split(/\r?\n/);
+   leggi_canti(costanti, config);
+   })
+}
+
+
+function caricaconst(config) 
+{
+    fetch("costanti.txt")
+        .then(response => response.text())
+        .then(text => {
+            const costanti = text.split(/\r?\n/);
+            leggi_canti(costanti, config);
+        });
+}
+
+function leggi_canti(costanti, config) 
+{
+  fetch("numericanti.txt")
+    .then(response => response.text())
+    .then(text => {
+      const titolicanti = text.split(/\r?\n/);
+      leggi_aggiunte(costanti, config, titolicanti);
+    })
+}
+
+
+function leggi_aggiunte(costanti, config, titolicanti) 
+{
+  fetch("numeriaggiunte.txt")
+    .then(response => response.text())
+    .then(text => {
+      const titoliaggiunte = text.split(/\r?\n/);
+      crea_programma(costanti, config, titolicanti, titoliaggiunte);
+    })
+}
+
+
+function crea_programma(costanti, config, titolicanti, titoliaggiunte) 
+{
+  document.getElementById("data_e_ora").innerHTML = "<h3>Programma del<br>" + config[0] + "</h3>";
+  const canti_liturgia = config[1];
+  const liturgie = costanti[0].split(',');
+  var html ="";
+
+  mioArray = canti_liturgia.split(';')
+  for (let i=0 ; i<24 ; i++) {
+      if (mioArray[i] != "0") {
+        if (mioArray[i].substring(0,3) == "149") mioArray[i] = "149";
+        if (mioArray[i].substring(0,3) == "163") mioArray[i] = "163";
+        if (mioArray[i].length < 4) {
+          if (mioArray[i].charAt(0) == "A")
+            html += "<a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + ": " + titoliaggiunte[mioArray[i].substring(1) - 1] + " (" + mioArray[i] + ")</a>"
+          else
+            html += "<a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + ": " + titolicanti[mioArray[i] - 1] + " (" + mioArray[i] + ")</a>"
+        }
+      }
+  }
+  html += "<center><img src=NextGen.png style=\"height:100px\"></center>";
+  document.getElementById("programma").innerHTML = html;
+}
+
+
+</script>
+         
+          
+
+          <span style="color:#AA0000" font-family="Arial, sans-serif" display="flex" flex-direction="column" align-items="center" font-size="18px">
+          <h2>Canti in ordine alfabetico</h2></span>
+          <div class="tutti_i_canti">
+            <a href="alfabetico/A.html">A</a>
+            <a href="alfabetico/B.html">B</a>
+            <a href="alfabetico/C.html">C</a>
+            <a href="alfabetico/D.html">D</a>
+            <a href="alfabetico/E.html">E</a>
+            <a href="alfabetico/F.html">F</a>
+            <a href="alfabetico/G.html">G</a>
+            <a href="alfabetico/H.html">H</a>
+            <a href="alfabetico/I.html">I</a>
+            <a href="alfabetico/L.html">L</a>
+            <a href="alfabetico/M.html">M</a>
+            <a href="alfabetico/N.html">N</a>
+            <a href="alfabetico/O.html">O</a>
+            <a href="alfabetico/P.html">P</a>
+            <a href="alfabetico/Q.html">Q</a>
+            <a href="alfabetico/R.html">R</a>
+            <a href="alfabetico/S.html">S</a>
+            <a href="alfabetico/T.html">T</a>
+            <a href="alfabetico/U.html">U</a>
+            <a href="alfabetico/V.html">V</a>
+
+          </div>
+
+          <br>
+          <div class="numeri"><a href="numeri.html">Canti in ordine numerico</a></div>
+          <br>
+
+</center>
+
+<!-- Controllo dimensione testo -->
+<div id="textbox">
+    
+    <!-- Controllo dimensione testo dentro il textbox -->
+    <div id="controlloTesto">
+        <span id="aMinus" style="cursor:pointer; font-size:18px; margin-right:15px;">A</span>
+        <span id="aDefault" style="cursor:pointer; font-size:22px; margin-right:15px;">A</span>
+        <span id="aPlus" style="cursor:pointer; font-size:26px;">A</span>
+
+        <p id="testoDimensione" style="margin-top:15px; font-size:16px;">
+            Dimensione del testo
+        </p>
+    </div>
+
+</div>
+
+
+<script>
+    const testo = document.getElementById("testoDimensione");
+
+    // limiti
+    const MIN = 12;
+    const MAX = 30;
+
+    // dimensione iniziale (recuperata da localStorage)
+    let size = parseInt(localStorage.getItem("dimTesto")) || 18;
+    testo.style.fontSize = size + "px";
+aggiornaStatoA(size);
+
+    function salvaLocale(nuovaDim) {
+        localStorage.setItem("dimTesto", nuovaDim);
+    }
+
+  function aggiornaStatoA(size) {
+    const aMinus = document.getElementById("aMinus");
+    const aDefault = document.getElementById("aDefault");
+    const aPlus = document.getElementById("aPlus");
+
+    // Rimuove il grigio da tutte
+    aMinus.classList.remove("a-disabled");
+    aDefault.classList.remove("a-disabled");
+    aPlus.classList.remove("a-disabled");
+
+    // Applica il grigio in base al valore
+    if (size === MIN) {
+        aMinus.classList.add("a-disabled");
+    } else if (size === 18) { // valore default
+        aDefault.classList.add("a-disabled");
+    } else if (size === MAX) {
+        aPlus.classList.add("a-disabled");
+    }
+}
+
+
+document.getElementById("aMinus").addEventListener("click", () => {
+    if (size > MIN) {
+        size -= 2;
+        testo.style.fontSize = size + "px";
+        salvaLocale(size);
+    }
+    aggiornaStatoA(size);
+});
+
+document.getElementById("aDefault").addEventListener("click", () => {
+    size = 18;
+    testo.style.fontSize = size + "px";
+    salvaLocale(size);
+    aggiornaStatoA(size);
+});
+
+document.getElementById("aPlus").addEventListener("click", () => {
+    if (size < MAX) {
+        size += 2;
+        testo.style.fontSize = size + "px";
+        salvaLocale(size);
+    }
+    aggiornaStatoA(size);
+});
+
+    
+</script>
+
+
+  </body>
+</html>

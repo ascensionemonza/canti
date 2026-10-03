@@ -1,0 +1,180 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .button-grid a {
+    display: block;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #BF8F00;
+    color: white;
+    text-decoration: none;
+    border-radius: 80px;
+    font-weight: normal;
+  }
+  .button-grid a:hover {
+    background-color: #00b300;
+    color: white;
+  }
+</style>
+<meta charset="UTF-8">
+<script>
+// Recupera la dimensione salvata
+let size = parseInt(localStorage.getItem("dimTesto")) || 16;
+
+// Funzione unica che applica il font ovunque
+function applicaFont() {
+    const contenuto = document.getElementById("contenuto");
+    if (contenuto) {
+        contenuto.style.fontSize = size + "px";
+        contenuto.querySelectorAll("*").forEach(el => {
+            el.style.fontSize = size + "px";
+        });
+    }
+
+    const testo = document.getElementById("testoDimensione");
+    if (testo) {
+        testo.style.fontSize = size + "px";
+    }
+}
+
+// Applica il font quando la pagina è pronta
+document.addEventListener("DOMContentLoaded", applicaFont);
+
+
+// 🔥 FUNZIONE MIGLIORATA: ora riceve anche il moltiplicatore
+function applicaDimensioneColonne(fontSize, multiplier) {
+
+    const baseWidth = fontSize * multiplier;
+
+    const tabelle = document.querySelectorAll("#contenuto table");
+
+    tabelle.forEach(tab => {
+
+        const colgroup = tab.querySelectorAll("col");
+
+        if (colgroup.length > 0) {
+            colgroup.forEach(col => {
+                col.style.width = baseWidth + "px";
+            });
+        } else {
+            const celle = tab.querySelectorAll("tr:first-child td, tr:first-child th");
+            celle.forEach(c => {
+                c.style.width = baseWidth + "px";
+            });
+        }
+    });
+}
+
+</script>
+
+
+</head>
+
+<span style="color:#BF8F00" font-family="Arial, sans-serif" display="flex" flex-direction="column" align-items="center" font-size="18px">
+<h1><div id="header"></div></h1></span>
+<div id="contenuto"></div>
+<div id="footer" class="button-grid"></div>
+
+<script>
+function codice(numero) {
+
+    if (!numero) return null;
+
+    numero = numero.toUpperCase();
+
+    let iniziale = numero.charAt(0);
+    if (/^[A-Z]/.test(iniziale)) {
+        return numero.charAt(0) + numero.substring(1).padStart(2,"0");
+    }
+
+    return numero.padStart(3,"0");
+}
+
+fetch("config/config.txt")
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.split(/\r?\n/);
+    caricaconst(lines);
+  })
+
+function caricaconst(lines) {
+  fetch("costanti.txt")
+  .then(response => response.text())
+  .then(text => {
+    const costanti = text.split(/\r?\n/);
+    crea_canto_lit(costanti, lines);
+   })
+}
+
+function crea_canto_lit(costanti, lines) {
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const liturgie = costanti[0].split(',');
+const momento = urlParams.get('n');
+const parametroStringa = lines[1];
+
+let mioArray = [];
+mioArray = parametroStringa.split(';');
+var prev_i = -1;
+
+if (mioArray[momento].charAt(0) != "") {
+  var file = "canti/";
+  if (mioArray[momento].substring(0,3) == "149") mioArray[momento] = "149";
+  if (mioArray[momento].substring(0,3) == "163") mioArray[momento] = "163";
+  file += codice(mioArray[momento]);
+  file += ".html";
+
+  for ( i=0 ; i < 25 ; i++) {
+    if (mioArray[i] != 0) {
+      if (mioArray[i].substring(0,3) == "149") mioArray[i] = "149";
+      if (mioArray[i].substring(0,3) == "163") mioArray[i] = "163";
+//      console.log(mioArray[i]);
+      if (mioArray[i].charAt(3) == "") {
+        if (i < momento) prev_i = i;
+        if (i > momento) break;
+      }
+    }
+  }
+
+
+
+  fetch(file)
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById("header").innerHTML = liturgie[momento];
+          document.getElementById("contenuto").innerHTML = html;
+
+          applicaFont();
+
+            if (prev_i == -1) {
+                document.getElementById("footer").innerHTML = "<a href=\"index.html\">-</a> <a href=\"index.html\">Indice</a> <a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + "</a><br>";
+            }
+            else {
+                if (i == 25) {
+                    document.getElementById("footer").innerHTML = "<a href=\"liturgia.html?n=" + prev_i + "\">" + liturgie[prev_i] + "</a> <a href=\"index.html\">Indice</a> <a href=\"index.html\">-</a>";
+                } else {
+                    document.getElementById("footer").innerHTML = "<a href=\"liturgia.html?n=" + prev_i +  "\">" + liturgie[prev_i] + "</a> <a href=\"index.html\">Indice</a> <a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + "</a><br>";
+                }    
+            }
+		});
+}
+}
+</script>
+
