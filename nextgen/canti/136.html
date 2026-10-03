@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+<h2>
+136.	Io vedo la tua luce<br>
+</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+
+<div id="soprani" class="voce">
+<ol>
+
+
+<li><span class="verde">
+Tu sei prima d’ogni cosa, prima d’ogni tempo,<br>
+d’ogni mio pensiero, prima della vita.<br></span>
+Una voce udimmo che gridava nel deserto:<br>
+“Preparate la venuta del Signore”.<br>
+<br><span class="verde">
+Tu sei la Parola eterna, della quale vivo,<br>
+che mi pronunciò soltanto per amore.<br></span>
+E ti abbiamo udito predicare sulle strade<br>
+della nostra incomprensione senza fine.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io so che tornerai.<br>
+<br></td>
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br></span>
+<br></td>
+
+</table>
+</b>
+<li><span class="verde">
+Tu sei l’apparire dell’immensa tenerezza<br>
+di un Amore che nessuno ha visto mai.<br></span>
+Ci fu dato il lieto annuncio della tua venuta:<br>
+noi abbiamo visto un uomo come noi.<br>
+<br><span class="verde">
+Tu sei verità che non tramonta,<br>
+sei la vita che non muore, sei la via d’un mondo nuovo.<br></span>
+E ti abbiamo visto stabilire la tua tenda<br>
+tra la nostra indifferenza d’ogni giorno.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io so che tornerai.<br>
+</td>
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br></span>
+</td>
+
+</table>
+</b>
+</ol>
+</div>
+
+
+
+
+<div id="contralti" class="voce">
+<ol>
+
+
+<li>
+Tu sei prima d’ogni cosa, prima d’ogni tempo,<br>
+d’ogni mio pensiero, prima della vita.<br>
+Una voce udimmo che gridava nel deserto:<br>
+“Preparate la venuta del Signore”.<br>
+<br>
+Tu sei la Parola eterna, della quale vivo,<br>
+che mi pronunciò soltanto per amore.<br>
+E ti abbiamo udito predicare sulle strade<br>
+della nostra incomprensione senza fine.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io so che tornerai.<br>
+<br></td>
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br></span>
+<br></td>
+
+</table>
+</b>
+<li>
+Tu sei l’apparire dell’immensa tenerezza<br>
+di un Amore che nessuno ha visto mai.<br>
+Ci fu dato il lieto annuncio della tua venuta:<br>
+noi abbiamo visto un uomo come noi.<br><br>
+Tu sei verità che non tramonta,<br>
+sei la vita che non muore, sei la via d’un mondo nuovo.<br>
+E ti abbiamo visto stabilire la tua tenda<br>
+tra la nostra indifferenza d’ogni giorno.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io so che tornerai.<br>
+</td>
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br></span>
+</td>
+
+</table>
+</b>
+</ol>
+</div>
+
+
+
+
+<div id="tenori" class="voce">
+<ol>
+
+
+<li><span class="verde">
+Tu sei prima d’ogni cosa, prima d’ogni tempo,<br>
+d’ogni mio pensiero, prima della vita.<br></span>
+Una voce udimmo che gridava nel deserto:<br>
+“Preparate la venuta del Signore”.<br>
+<br><span class="verde">
+Tu sei la Parola eterna, della quale vivo,<br>
+che mi pronunciò soltanto per amore.<br></span>
+E ti abbiamo udito predicare sulle strade<br>
+della nostra incomprensione senza fine.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io</span> so che tornerai.<br>
+<br></td>
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br>
+<br></td>
+
+</table>
+</b>
+<li><span class="verde">
+Tu sei l’apparire dell’immensa tenerezza<br>
+di un Amore che nessuno ha visto mai.<br></span>
+Ci fu dato il lieto annuncio della tua venuta:<br>
+noi abbiamo visto un uomo come noi.<br>
+<br><span class="verde">
+Tu sei verità che non tramonta,<br>
+sei la vita che non muore, sei la via d’un mondo nuovo.<br></span>
+E ti abbiamo visto stabilire la tua tenda<br>
+tra la nostra indifferenza d’ogni giorno.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io</span> so che tornerai.<br>
+</td>
+<td>
+
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br>
+</td>
+
+</table>
+</b>
+</ol>
+</div>
+
+
+
+
+<div id="bassi" class="voce">
+<ol>
+
+
+<li>
+Tu sei prima d’ogni cosa, prima d’ogni tempo,<br>
+d’ogni mio pensiero, prima della vita.<br>
+Una voce udimmo che gridava nel deserto:<br>
+“Preparate la venuta del Signore”.<br>
+<br>
+Tu sei la Parola eterna, della quale vivo,<br>
+che mi pronunciò soltanto per amore.<br>
+E ti abbiamo udito predicare sulle strade<br>
+della nostra incomprensione senza fine.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td><span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io</span> so che tornerai.<br>
+<br></td>
+<td>
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br>
+<br></td>
+
+</table>
+</b>
+<li>
+Tu sei l’apparire dell’immensa tenerezza<br>
+di un Amore che nessuno ha visto mai.<br>
+Ci fu dato il lieto annuncio della tua venuta:<br>
+noi abbiamo visto un uomo come noi.<br>
+<br>
+Tu sei verità che non tramonta,<br>
+sei la vita che non muore, sei la via d’un mondo nuovo.<br>
+E ti abbiamo visto stabilire la tua tenda<br>
+tra la nostra indifferenza d’ogni giorno.<br>
+<br>
+</li>
+<b>
+<table style="width: 400px">
+<td>
+<span class="verde">
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+io</span> so che tornerai.<br>
+</td>
+<td>
+
+Io ora so chi sei,<br>
+io sento la tua voce,<br>
+io vedo la tua luce,<br>
+io so che Tu sei qui.<br>
+E sulla tua Parola<br>
+io credo nell’amore,<br>
+io vivo nella pace,<br>
+<br>
+</td>
+
+</table>
+</b>
+</ol>
+</div>
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni
+    document.getElementById('soprani').style.display = 'none';
+    document.getElementById('contralti').style.display = 'none';
+    document.getElementById('tenori').style.display = 'none';
+    document.getElementById('bassi').style.display = 'none';
+
+    // Mostra quella selezionata
+    document.getElementById(voce).style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo
+    const btnAttivo = document.querySelector(`.voceBox a[onclick="selezionaVoce('${voce}')"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+
+</body>
+</html>
+

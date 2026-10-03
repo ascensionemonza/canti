@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300;
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00;
+    color: white;
+}
+
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}
+
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none;
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+<h2>
+120.	Il canto dell’amore<br>
+</h2>
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="voci-alte" class="voce">
+<ol>
+
+
+
+<li><span class="verde">
+Se dovrai attraversare il deserto non temere, Io sarò con te.<br>
+Se dovrai camminare nel fuoco la sua fiamma non ti brucerà.<br></span>
+<br>
+</li>
+<b>
+Seguirai la mia luce nella notte,<br>
+sentirai la mia forza nel cammino:<br>
+Io sono il tuo Dio, il Signore.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Sono Io che ti ho fatto e plasmato, ti ho chiamato per nome.<br>
+Io da sempre ti ho conosciuto e ti ho dato il mio amore.<br></span>
+<br>
+</li>
+<b>
+<table>
+<td style="width: 300px">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br>
+</td>
+<td><span class="verde">
+Perché tu sei prezioso<br>
+più grande dei tesori:<br></span>
+</td></table>
+Io sarò con te dovunque andrai.<br>
+</b>
+<br>
+<li><span class="verde">
+Non pensare alle cose di ieri, cose nuove fioriscono già.<br>
+Aprirò nel deserto sentieri, darò acqua nell’aridità.<br></li></span>
+<b><br>
+<table>
+<td style="width: 300px">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br>
+</td>
+<td><span class="verde">
+Perché tu sei prezioso<br>
+più grande dei tesori:<br></span>
+</td></table>
+Io sarò con te dovunque andrai.<br>
+
+<br>
+
+<table>
+<td style="width: 300px">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br>
+</td>
+<td><span class="verde">
+Perché tu sei prezioso<br>
+più grande dei tesori:<br></span>
+</td></table>
+Io sarò con te dovunque andrai.</b><br>
+<br>
+Io ti sarò accanto sarò con te,<br>per tutto il tuo viaggio sarò con te.<br>
+Io ti sarò accanto sarò con te,<br>per tutto il tuo viaggio sarò con te.<br>
+
+</ol>
+</div>
+
+
+
+
+
+<div id="voci-basse" class="voce">
+<ol>
+
+
+
+<li>
+Se dovrai attraversare il deserto non temere, Io sarò con te.<br>
+Se dovrai camminare nel fuoco la sua fiamma non ti brucerà.<br>
+<br>
+</li>
+<b><span class="verde">
+Seguirai la mia luce nella notte,<br>
+sentirai la mia forza nel cammino:<br></span>
+Io sono il tuo Dio, il Signore.<br>
+<br>
+</b>
+
+<li>
+Sono Io che ti ho fatto e plasmato, ti ho chiamato per nome.<br>
+Io da sempre ti ho conosciuto e ti ho dato il mio amore.<br>
+<br>
+</li>
+<b>
+<table>
+<td style="width: 300px">
+<span class="verde">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br></span>
+</td>
+<td>
+Perché tu sei prezioso<br>
+più grande dei tesori:<br>
+</td></table>
+Io sarò con te dovunque andrai.<br>
+</b>
+
+<br>
+<li>
+Non pensare alle cose di ieri, cose nuove fioriscono già.<br>
+Aprirò nel deserto sentieri, darò acqua nell’aridità.<br></li>
+<b><br>
+<table>
+<td style="width: 300px">
+<span class="verde">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br></span>
+</td>
+<td>
+Perché tu sei prezioso<br>
+più grande dei tesori:<br>
+</td></table>
+Io sarò con te dovunque andrai.<br>
+
+<br>
+
+<table>
+<td style="width: 300px">
+<span class="verde">
+Perché tu sei prezioso ai miei occhi,<br>
+Vali più del più grande dei tesori:<br></span>
+</td>
+<td>
+Perché tu sei prezioso<br>
+più grande dei tesori:<br>
+</td></table>
+Io sarò con te dovunque andrai.</b><br>
+<br>
+Io ti sarò accanto sarò con te,<br>per tutto il tuo viaggio sarò con te.<br>
+Io ti sarò accanto sarò con te,<br>per tutto il tuo viaggio sarò con te.<br>
+</ol>
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "voci-alte",
+        contralti: "voci-basse",
+        tenori: "voci-alte",
+        bassi: "voci-basse"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>	
+

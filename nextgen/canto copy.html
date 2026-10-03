@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body data-home-page="index.html" data-home-page-title="Home" data-path-to-root="/" data-include-products="false" class="u-body u-clearfix u-palette-1-light-2 u-xl-mode" data-lang="it">
+
+<section class="u-clearfix u-palette-1-light-2 u-section-1" id="block-2">
+<div class="u-clearfix u-sheet u-sheet-1">
+<div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1"></div>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px 10px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .button-grid a {
+    display: block;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #BF8F00;
+    color: white;
+    text-decoration: none;
+    border-radius: 80px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .button-grid a:hover {
+    background-color: #00b300;
+    color: white;
+  }
+</style>
+
+<meta charset="UTF-8">
+
+<body>
+
+<div id="contenuto"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+let n = params.get("n");
+
+if (n) {
+
+    n = n.toUpperCase();
+
+    let file;
+
+    if (/^[A-Z]/.test(n)) {
+        const lettera = n.charAt(0);
+        const numero = n.substring(1).padStart(2, "0");
+        file = lettera + numero;
+    } else {
+        file = n.padStart(3, "0");
+    }
+
+    file = "canti/" + file + ".html";
+
+    fetch(file)
+      .then(r => r.text())
+      .then(html => {
+        const container = document.getElementById("contenuto");
+        container.innerHTML = html;
+
+        // Esegui gli script contenuti nel file caricato
+        container.querySelectorAll("script").forEach(oldScript => {
+          const newScript = document.createElement("script");
+          newScript.textContent = oldScript.textContent;
+          document.body.appendChild(newScript);
+        });
+
+        // *** SOLO ORA gli elementi del canto esistono ***
+        const vociPresenti = [...container.querySelectorAll('.voce')].map(v => v.id);
+
+        const voceSB = localStorage.getItem('vocePreferita');
+        const voceFM = localStorage.getItem('vocePreferitaFM');
+
+        if (voceSB && vociPresenti.includes(voceSB)) {
+            mostraVoce(voceSB);
+        } else if (voceFM && vociPresenti.includes(voceFM)) {
+            mostraVoce(voceFM);
+        }
+      });
+
+} else {
+    document.body.innerHTML = "<h2>Nessun parametro ricevuto.</h2>";
+}
+
+
+/* ---------------------------
+   MOSTRA LA VOCE SELEZIONATA
+   --------------------------- */
+
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni (se esistono)
+    ['soprani','contralti','tenori','bassi','femmine','maschi'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    // Mostra quella selezionata (se esiste)
+    const target = document.getElementById(voce);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo (usando data-voce, più robusto)
+    const btnAttivo = document.querySelector(`.voceBox a[data-voce="${voce}"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+/* ---------------------------
+   SELEZIONE + MEMORIZZAZIONE
+   --------------------------- */
+
+function selezionaVoce(voce) {
+    if (['soprani', 'contralti', 'tenori', 'bassi'].includes(voce)) {
+        localStorage.setItem('vocePreferita', voce);
+    }
+
+    if (['femmine', 'maschi'].includes(voce)) {
+        localStorage.setItem('vocePreferitaFM', voce);
+    }
+    mostraVoce(voce);
+}
+
+</script>
+
+<br><br>
+
+<div class="button-grid">
+  <a href="javascript:history.back()">Indietro</a>
+  <a href="index.html">Indice</a>
+  <a href="numeri.html">Indice numerico</a>
+</div>
+
+<br><br>
+</body>
+</html>

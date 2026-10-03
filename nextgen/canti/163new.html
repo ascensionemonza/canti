@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+
+/* --- Misteri --- */
+.mistero { margin-top: 20px; }
+
+/* Intestazioni dei misteri — Variante A */
+.mistero-header {
+  cursor: pointer;
+  font-weight: 600;        /* semi-bold */
+  font-size: 1.22em;       /* più grande del testo normale */
+  letter-spacing: 0.4px;   /* leggero respiro tipografico */
+  padding: 6px 0;
+  margin-top: 22px;
+}
+.mistero-header::before { content: "+ "; }
+.mistero.aperto .mistero-header::before { content: "- "; }
+
+.mistero-contenuto {
+  display: none;
+  margin-top: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>163. Mi hai tenuto per mano</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+
+<!-- ============================================================
+     MISTERO 1 — ESISTENZA
+============================================================ -->
+<div class="mistero">
+  <div class="mistero-header">1. Mistero dell’esistenza</div>
+  <div class="mistero-contenuto">
+
+    <!-- FEMMINILI -->
+      Gli occhi videro il mondo durante giorni che non ricordo,<br>
+      il tempo seguì i miei passi per un mistero che non conosco,<br>
+      un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
+      e buona vidi mia madre: il mio respiro fu pianto e sogno.<br><br>
+
+      Il tempo indurì le mani, ogni mio sogno si fece terra,<br>
+      La strada a chi non ha ali, il primo passo fu sfida e rabbia;<br>
+      parole a nutrir la voce e luci senza veder la strada:<br>
+      sul ciglio stavo seduto e fui bambino tra stelle e sabbia.<br><br>
+
+      Io non ho più paura, vedo un torrente di volti<br>
+      che scorre tra gli argini di una stessa avventura;<br>
+      chi è vicino alla fonte, chi già lascia la valle,<br>
+      chi ha percorso da tempo la grande pianura.<br><br>
+
+      <b>
+        Davanti al mio nome Ti sei fermato<br>
+        e dal primo respiro mi hai tenuto per mano,<br>
+        mi hai tenuto per mano,<br>
+        mi hai tenuto per mano.<br>
+      </b>
+    </div>
+
+    <!-- TENORI (AZZURRO) -->
+    <div id="tenori" class="voce">
+
+      <span class="verde">
+        Gli occhi videro il mondo durante giorni che non ricordo,<br>
+        il tempo seguì i miei passi per un mistero che non conosco,<br>
+        un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
+        e buona vidi mia madre: il mio respiro fu pianto e sogno.<br><br>
+
+        Il tempo indurì le mani, ogni mio sogno si fece terra,<br>
+        La strada a chi non ha ali, il primo passo fu sfida e rabbia;<br>
+        parole a nutrir la voce e luci senza veder la strada:<br>
+        sul ciglio stavo seduto e fui bambino tra stelle e sabbia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo un torrente di volti<br>
+        che scorre tra gli argini di una stessa avventura;<br>
+        chi è vicino alla fonte, chi già lascia la valle,<br>
+        chi ha percorso da tempo la grande pianura.<br><br>
+
+      <b>
+        Davanti al mio nome Tu sei<br>
+        dal primo respiro Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        per mano.<br>
+      </b>
+    </div>
+
+    <!-- BASSI (BLU) -->
+    <div id="bassi" class="voce">
+
+      <span class="verde">
+        Gli occhi videro il mondo durante giorni che non ricordo,<br>
+        il tempo seguì i miei passi per un mistero che non conosco,<br>
+        un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
+        e buona vidi mia madre: il mio respiro fu pianto e sogno.<br><br>
+
+        Il tempo indurì le mani, ogni mio sogno si fece terra,<br>
+        La strada a chi non ha ali, il primo passo fu sfida e rabbia;<br>
+        parole a nutrir la voce e luci senza veder la strada:<br>
+        sul ciglio stavo seduto e fui bambino tra stelle e sabbia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo un torrente di volti<br>
+        che scorre tra gli argini di una stessa avventura;<br>
+        chi è vicino alla fonte, chi già lascia la valle,<br>
+        chi ha percorso da tempo la grande pianura.<br><br>
+
+      <b>
+        Davanti a me<br>
+        fermato<br>
+        dal primo respiro Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        mano.<br>
+      </b>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     MISTERO 2 — INCARNAZIONE
+============================================================ -->
+<div class="mistero">
+  <div class="mistero-header">2. Mistero dell’Incarnazione</div>
+  <div class="mistero-contenuto">
+
+    <!-- FEMMINILI -->
+    <div id="femmine" class="voce">
+      Fu quando mi seppi dono che dire grazie fu dire molto,<br>
+      a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
+      Temetti la verità quando il coraggio si fece orgoglio,<br>
+      qualcuno mi disse: cerca con l’umiltà di chi accoglie un dono.<br><br>
+
+      La storia si è fatta casa, il tempo attesa di una salvezza.<br>
+      L’amore di chi ha creato si è fatto impronta di ogni speranza.<br>
+      La carne si è fatta segno, custode e tempio di tenerezza.<br>
+      Il Padre si è fatto Figlio e fu bambino tra stelle e sabbia.<br><br>
+
+      Io non ho più paura, vedo la luce<br>
+      e ritorna la pace, la strada si è fatta sicura;<br>
+      ora vedo la fonte e la grande pianura:<br>
+      la potenza creatrice si è fatta creatura.<br><br>
+
+      <b>
+        Davanti al mio volto Ti sei chinato<br>
+        e fratello nel viaggio mi hai tenuto per mano,<br>
+        mi hai tenuto per mano,<br>
+        mi hai tenuto per mano.<br>
+      </b>
+    </div>
+
+    <!-- TENORI (AZZURRO) -->
+    <div id="tenori" class="voce">
+
+      <span class="verde">
+        Fu quando mi seppi dono che dire grazie fu dire molto,<br>
+        a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
+        Temetti la verità quando il coraggio si fece orgoglio,<br>
+        qualcuno mi disse: cerca con l’umiltà di chi accoglie un dono.<br><br>
+
+        La storia si è fatta casa, il tempo attesa di una salvezza.<br>
+        L’amore di chi ha creato si è fatto impronta di ogni speranza.<br>
+        La carne si è fatta segno, custode e tempio di tenerezza.<br>
+        Il Padre si è fatto Figlio e fu bambino tra stelle e sabbia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo la luce<br>
+        e ritorna la pace, la strada si è fatta sicura;<br>
+        ora vedo la fonte e la grande pianura:<br>
+        la potenza creatrice si è fatta creatura.<br><br>
+
+      <b>
+        Davanti al mio volto Tu sei<br>
+        fratello nel viaggio<br>
+        Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        per mano.<br>
+      </b>
+    </div>
+
+    <!-- BASSI (BLU) -->
+    <div id="bassi" class="voce">
+
+      <span class="verde">
+        Fu quando mi seppi dono che dire grazie fu dire molto,<br>
+        a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
+        Temetti la verità quando il coraggio si fece orgoglio,<br>
+        qualcuno mi disse: cerca con l’umiltà di chi accoglie un dono.<br><br>
+
+        La storia si è fatta casa, il tempo attesa di una salvezza.<br>
+        L’amore di chi ha creato si è fatto impronta di ogni speranza.<br>
+        La carne si è fatta segno, custode e tempio di tenerezza.<br>
+        Il Padre si è fatto Figlio e fu bambino tra stelle e sabbia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo la luce<br>
+        e ritorna la pace, la strada si è fatta sicura;<br>
+        ora vedo la fonte e la grande pianura:<br>
+        la potenza creatrice si è fatta creatura.<br><br>
+
+      <b>
+        Davanti a me<br>
+        chinato<br>
+        fratello nel viaggio<br>
+        Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        mano.<br>
+      </b>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     MISTERO 3 — MORTE
+============================================================ -->
+<div class="mistero">
+  <div class="mistero-header">3. Mistero della Morte</div>
+  <div class="mistero-contenuto">
+
+    <!-- FEMMINILI -->
+    <div id="femmine" class="voce">
+      Ho visto semi d’amore unire mani, destini e corpi,<br>
+      portare consolazione a chi conobbe dolore e morte;<br>
+      ho visto colmare abissi con un abbraccio riconciliante,<br>
+      ho visto una croce infissa dove il perdono si fece sangue.<br><br>
+
+      La strada si è fatta folla, il monte pietra dell’agonia.<br>
+      Il cielo si è fatto tenda della promessa e della memoria.<br>
+      La voce si è fatta grido, le mani preda della follia.<br>
+      Il corpo si è fatto pane per tutti gli uomini senza storia.<br><br>
+
+      Io non ho più paura, vedo l’amore<br>
+      che scende la valle e consola la grande pianura;<br>
+      è sospinto alla foce sopra un legno crudele,<br>
+      condivide la sorte di ogni creatura.<br><br>
+
+      <b>
+        Davanti a una croce Ti sei piegato<br>
+        le mani nel legno mi han tenuto per mano,<br>
+        mi han tenuto per mano,<br>
+        mi han tenuto per mano.<br>
+      </b>
+    </div>
+
+    <!-- TENORI (AZZURRO) -->
+    <div id="tenori" class="voce">
+
+      <span class="verde">
+        Ho visto semi d’amore unire mani, destini e corpi,<br>
+        portare consolazione a chi conobbe dolore e morte;<br>
+        ho visto colmare abissi con un abbraccio riconciliante,<br>
+        ho visto una croce infissa dove il perdono si fece sangue.<br><br>
+
+        La strada si è fatta folla, il monte pietra dell’agonia.<br>
+        Il cielo si è fatto tenda della promessa e della memoria.<br>
+        La voce si è fatta grido, le mani preda della follia.<br>
+        Il corpo si è fatto pane per tutti gli uomini senza storia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo l’amore<br>
+        che scende la valle e consola la grande pianura;<br>
+        è sospinto alla foce sopra un legno crudele,<br>
+        condivide la sorte di ogni creatura.<br><br>
+
+      <b>
+        Davanti al mio nome sei Tu<br>
+        le tue mani nel legno<br>
+        mi han tenuto per mano,<br>
+        Tu mi han tenuto per mano,<br>
+        per mano.<br>
+      </b>
+    </div>
+
+    <!-- BASSI (BLU) -->
+    <div id="bassi" class="voce">
+
+      <span class="verde">
+        Ho visto semi d’amore unire mani, destini e corpi,<br>
+        portare consolazione a chi conobbe dolore e morte;<br>
+        ho visto colmare abissi con un abbraccio riconciliante,<br>
+        ho visto una croce infissa dove il perdono si fece sangue.<br><br>
+
+        La strada si è fatta folla, il monte pietra dell’agonia.<br>
+        Il cielo si è fatto tenda della promessa e della memoria.<br>
+        La voce si è fatta grido, le mani preda della follia.<br>
+        Il corpo si è fatto pane per tutti gli uomini senza storia.<br><br>
+      </span>
+
+        Io non ho più paura, vedo l’amore<br>
+        che scende la valle e consola la grande pianura;<br>
+        è sospinto alla foce sopra un legno crudele,<br>
+        condivide la sorte di ogni creatura.<br><br>
+
+      <b>
+        Davanti a me<br>
+        piegato<br>
+        le mani nel legno<br>
+        Tu mi han tenuto per mano,<br>
+        Tu mi han tenuto per mano,<br>
+        mano.<br>
+      </b>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     MISTERO 4 — RISURREZIONE
+============================================================ -->
+<div class="mistero">
+  <div class="mistero-header">4. Mistero della Risurrezione</div>
+  <div class="mistero-contenuto">
+
+    <!-- FEMMINILI -->
+    <div id="femmine" class="voce">
+      La storia si fece luce durante un’ora di poesia,<br>
+      l’amore divenne forza che, dolce, vince ogni resistenza;<br>
+      la terra si fece altare di imprevedibile liturgia,<br>
+      la morte si fece figlia riconciliata dell’esistenza.<br><br>
+
+      Fu allora che vidi il cielo, sacra dimora dell’infinito;<br>
+      fu allora che amai la terra, forma possibile dell’assoluto;<br>
+      feconda di una speranza che lega volti, cuori e destini,<br>
+      accolgo la Verità fino a che tutto non sia compiuto.<br><br>
+
+      Io non ho più paura, vedo una grande distesa di pace<br>
+      accogliere l’acqua più pura:<br>
+      chi è vicino alla fonte, chi già lascia la valle,<br>
+      chi è già parte di Dio nella grande distesa.<br><br>
+
+      <b>
+        Davanti al mio nome Ti sei fermato<br>
+        e dal primo respiro mi hai tenuto per mano,<br>
+        mi hai tenuto per mano,<br>
+        mi hai tenuto per mano.<br>
+      </b>
+    </div>
+
+    <!-- TENORI (AZZURRO) -->
+    <div id="tenori" class="voce">
+
+      <span class="verde">
+        La storia si fece luce durante un’ora di poesia,<br>
+        l’amore divenne forza che, dolce, vince ogni resistenza;<br>
+        la terra si fece altare di imprevedibile liturgia,<br>
+        la morte si fece figlia riconciliata dell’esistenza.<br><br>
+
+        Fu allora che vidi il cielo, sacra dimora dell’infinito;<br>
+        fu allora che amai la terra, forma possibile dell’assoluto;<br>
+        feconda di una speranza che lega volti, cuori e destini,<br>
+        accolgo la Verità fino a che tutto non sia compiuto.<br><br>
+      </span>
+
+        Io non ho più paura, vedo una grande distesa di pace<br>
+        accogliere l’acqua più pura:<br>
+        chi è vicino alla fonte, chi già lascia la valle,<br>
+        chi è già parte di Dio nella grande distesa.<br><br>
+
+      <b>
+        Davanti al mio nome Tu sei<br>
+        dal primo respiro<br>
+        Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        per mano.<br>
+      </b>
+    </div>
+
+    <!-- BASSI (BLU) -->
+    <div id="bassi" class="voce">
+
+      <span class="verde">
+        La storia si fece luce durante un’ora di poesia,<br>
+        l’amore divenne forza che, dolce, vince ogni resistenza;<br>
+        la terra si fece altare di imprevedibile liturgia,<br>
+        la morte si fece figlia riconciliata dell’esistenza.<br><br>
+
+        Fu allora che vidi il cielo, sacra dimora dell’infinito;<br>
+        fu allora che amai la terra, forma possibile dell’assoluto;<br>
+        feconda di una speranza che lega volti, cuori e destini,<br>
+        accolgo la Verità fino a che tutto non sia compiuto.<br><br>
+      </span>
+
+        Io non ho più paura, vedo una grande distesa di pace<br>
+        accogliere l’acqua più pura:<br>
+        chi è vicino alla fonte, chi già lascia la valle,<br>
+        chi è già parte di Dio nella grande distesa.<br><br>
+
+      <b>
+        Davanti a me<br>
+        fermato<br>
+        dal primo respiro<br>
+        Tu mi hai tenuto per mano,<br>
+        Tu mi hai tenuto per mano,<br>
+        mano.<br>
+      </b>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+
+/* ===========================
+   LOGICA MISTERI (accordion)
+=========================== */
+document.querySelectorAll('.mistero-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const mistero = header.parentElement;
+    const contenuto = mistero.querySelector('.mistero-contenuto');
+    const aperto = mistero.classList.toggle('aperto');
+    contenuto.style.display = aperto ? 'block' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>

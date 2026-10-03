@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300;
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00;
+    color: white;
+}
+
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}
+
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none;
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+
+<h2>
+116.	I cieli narrano<br>
+
+</h2>
+
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="soprani" class="voce">
+
+<ol>
+
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li>
+Il giorno al giorno ne affida il messaggio, '<br>
+la notte alla notte ne trasmette notizia: '<br>
+non è linguaggio, non sono ' parole<br>
+di cui non si oda il suono.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li>
+Là pose una tenda per il sole che sorge '<br>
+è come uno sposo dalla stanza nuziale: '<br>
+esulta come un prode ' che corre<br>
+con gioia la sua strada.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li>
+Lui sorge dall’ultimo estremo del cielo '<br>
+e la sua corsa l’altro estremo raggiunge: '<br>
+nessuna delle creature ' potrà<br>
+mai sottrarsi al suo calore.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li>
+La legge di Dio rinfranca l’anima mia, '<br>
+la testimonianza del Signore è verace: '<br>
+gioisce il cuore ai suoi giusti ' precetti<br>
+che danno la luce agli occhi.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+
+</b>
+
+</ol>
+</div>
+
+	
+
+
+
+<div id="altri" class="voce">
+
+<ol>
+
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li><span class="verde">
+Il giorno al giorno ne affida il messaggio, '<br>
+la notte alla notte ne trasmette notizia: '<br>
+non è linguaggio, non sono ' parole<br>
+di cui non si oda il suono.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li><span class="verde">
+Là pose una tenda per il sole che sorge '<br>
+è come uno sposo dalla stanza nuziale: '<br>
+esulta come un prode ' che corre<br>
+con gioia la sua strada.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li><span class="verde">
+Lui sorge dall’ultimo estremo del cielo '<br>
+e la sua corsa l’altro estremo raggiunge: '<br>
+nessuna delle creature ' potrà<br>
+mai sottrarsi al suo calore.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+<br>
+</b>
+<li><span class="verde">
+La legge di Dio rinfranca l’anima mia, '<br>
+la testimonianza del Signore è verace: '<br>
+gioisce il cuore ai suoi giusti ' precetti<br>
+che danno la luce agli occhi.<br></span>
+<br>
+</li>
+<b>
+I cieli narrano la gloria di Dio<br>
+e il firmamento annunzia l’opera sua.<br>
+Alleluia, alleluia, alleluia, alleluia.<br></span>
+
+</b>
+
+</ol>
+</div>
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        contralti: "altri",
+        tenori: "altri",
+        bassi: "altri"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

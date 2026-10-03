@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .button-grid a {
+    display: block;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #BF8F00;
+    color: white;
+    text-decoration: none;
+    border-radius: 80px;
+    font-weight: normal;
+  }
+  .button-grid a:hover {
+    background-color: #00b300;
+    color: white;
+  }
+</style>
+
+<meta charset="UTF-8">
+</head>
+
+<span style="color:#BF8F00">
+<h1><div id="header"></div></h1></span>
+
+<div id="contenuto"></div>
+<br><br>
+<div id="footer" class="button-grid"></div>
+
+<script>
+function codice(numero) {
+
+    if (!numero) return null;
+
+    numero = numero.toUpperCase();
+
+    let iniziale = numero.charAt(0);
+    if (/^[A-Z]/.test(iniziale)) {
+        return numero.charAt(0) + numero.substring(1).padStart(2,"0");
+    }
+
+    return numero.padStart(3,"0");
+}
+
+fetch("/cantiSB/config/config.txt?nocache=" + Date.now())
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.split(/\r?\n/);
+    caricaconst(lines);
+  });
+
+function caricaconst(lines) {
+  fetch("/cantiSB/costanti.txt")
+  .then(response => response.text())
+  .then(text => {
+    const costanti = text.split(/\r?\n/);
+    crea_canto_lit(costanti, lines);
+   });
+}
+
+function crea_canto_lit(costanti, lines) {
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const liturgie = costanti[0].split(',');
+const momento = urlParams.get('n');
+const parametroStringa = lines[1];
+
+let mioArray = parametroStringa.split(';');
+var prev_i = -1;
+var i = 0;
+
+if (mioArray[momento].charAt(0) != "") {
+
+  var file = "canti/";
+  if (mioArray[momento].substring(0,3) == "149") mioArray[momento] = "149";
+  if (mioArray[momento].substring(0,3) == "163") mioArray[momento] = "163";
+
+  file += codice(mioArray[momento]);
+  file += ".html";
+
+  for (i = 0; i < 25; i++) {
+    if (mioArray[i] != 0) {
+      if (mioArray[i].substring(0,3) == "149") mioArray[i] = "149";
+      if (mioArray[i].substring(0,3) == "163") mioArray[i] = "163";
+
+      if (mioArray[i].charAt(3) == "") {
+        if (i < momento) prev_i = i;
+        if (i > momento) break;
+      }
+    }
+  }
+
+  fetch(file)
+        .then(r => r.text())
+        .then(html => {
+
+          document.getElementById("header").innerHTML = liturgie[momento];
+          document.getElementById("contenuto").innerHTML = html;
+          let voceSalvata = localStorage.getItem('vocePreferita');
+          if (voceSalvata) {
+              setTimeout(() => {
+                  if (document.getElementById('soprani')) {
+                      mostraVoce(voceSalvata);
+                  }
+              }, 0);
+          }
+          if (prev_i == -1) {
+              document.getElementById("footer").innerHTML =
+                "<a href=\"index.html\">-</a> " +
+                "<a href=\"index.html\">Indice</a> " +
+                "<a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + "</a>";
+          }
+          else {
+              if (i == 25) {
+                  document.getElementById("footer").innerHTML =
+                    "<a href=\"liturgia.html?n=" + prev_i + "\">" + liturgie[prev_i] + "</a> " +
+                    "<a href=\"index.html\">Indice</a> " +
+                    "<a href=\"index.html\">-</a>";
+              } else {
+                  document.getElementById("footer").innerHTML =
+                    "<a href=\"liturgia.html?n=" + prev_i + "\">" + liturgie[prev_i] + "</a> " +
+                    "<a href=\"index.html\">Indice</a> " +
+                    "<a href=\"liturgia.html?n=" + i + "\">" + liturgie[i] + "</a>";
+              }
+          }
+        });
+}
+}
+
+
+/* ---------------------------
+   MOSTRA LA VOCE SELEZIONATA
+   --------------------------- */
+
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni
+    document.getElementById('soprani').style.display = 'none';
+    document.getElementById('contralti').style.display = 'none';
+    document.getElementById('tenori').style.display = 'none';
+    document.getElementById('bassi').style.display = 'none';
+
+    // Mostra quella selezionata
+    document.getElementById(voce).style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo
+    const btnAttivo = document.querySelector(`.voceBox a[onclick="selezionaVoce('${voce}')"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+/* ---------------------------
+   SELEZIONE + MEMORIZZAZIONE
+   --------------------------- */
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+</script>
+
+</script>
+
+</html>

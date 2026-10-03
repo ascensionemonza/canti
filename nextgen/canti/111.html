@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300;
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00;
+    color: white;
+}
+
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}
+
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none;
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+<h2>
+111.	Gloria (Giombini)<br>
+</h2>
+
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+
+Gloria, gloria a Dio nell’alto dei cieli, gloria.<br><br>
+<table>
+<td style="width: 200px">E pace,<br>e pace</td>
+<td style="width: 200px"><span class="verde">e pace in terra<br>in terra agli uomini</span></td>
+</table>
+in terra agli uomini amati dal Signor.<br><br>
+<table>
+<td style="width: 200px">Noi ti lodiamo,<br>ti benediciamo,<br>ti adoriamo,<br>ti glorifichiamo.</td>
+<td style="width: 200px"><span class="verde">Noi ti lodiamo,<br>ti benediciamo,<br>ti adoriamo,<br>ti glorifichiamo.</span></td>
+</table>
+Ti rendiamo grazie per la tua gloria immensa.<br><br>
+Signore Figlio Unigenito, Gesù Cristo, Signore Dio,<br>
+<span class="verde">Agnello di Dio, figlio del Padre,</span><br>
+Tu che togli i peccati, i peccati del mondo<br>
+abbi pietà di noi, abbi pietà di noi.<br><br>
+<table>
+    <td style="width: 200px">Tu che togli i peccati,<br>i peccati del mondo,</td>
+    <td style="width: 200px"><span class="verde">Tu che togli i peccati,<br>i peccati del mondo,</span></td>
+</table>
+accogli, accogli la nostra supplica.<br><br>
+<span class="verde">Tu che siedi alla destra, alla destra del Padre,</span><br>
+abbi pietà di noi, abbi pietà di noi.<br><br><br>
+<table>
+<td style="width: 200px">Perché Tu solo il Santo,<br>Tu solo il Signore,<br>Tu solo l’Altissimo<br>Gesù Cristo,<br></td>
+<td style="width: 200px"><span class="verde">Perché Tu solo il Santo,<br>Tu solo il Signore,<br>Tu solo l’Altissimo<br>Gesù Cristo,<br></span></td>
+</table>
+con lo Spirito Santo nella gloria di Dio Padre. Amen.<br><br>
+<table>
+    <td style="width: 200px">Con lo Spirito<br>Santo</td>
+    <td style="width: 200px"><span class="verde">Con lo Spirito Santo<br>nella gloria di Dio Padre</span></td>
+</table>
+nella gloria di Dio Padre.<br>
+<table>
+    <td style="width: 200px">Amen.</td><td style="width: 200px"><span class="verde">Amen.</span></td>
+</table><br>
+nella gloria di Dio Padre. Amen.<br>
+<br>
+
+</div>
+
+
+
+
+
+
+<div id="maschi" class="voce">
+
+Gloria, gloria a Dio nell’alto dei cieli, gloria.<br><br>
+<table>
+<td style="width: 200px"><span class="verde">E pace,<br>e pace</span></td>
+<td style="width: 200px">e pace in terra<br>in terra agli uomini</td>
+</table>
+in terra agli uomini amati dal Signor.<br><br>
+<table>
+<td style="width: 200px"><span class="verde">Noi ti lodiamo,<br>ti benediciamo,<br>ti adoriamo,<br>ti glorifichiamo.</span></td>
+<td style="width: 200px">Noi ti lodiamo,<br>ti benediciamo,<br>ti adoriamo,<br>ti glorifichiamo.</td>
+</table>
+Ti rendiamo grazie per la tua gloria immensa.<br><br>
+Signore Figlio Unigenito, Gesù Cristo, Signore Dio,<br>
+Agnello di Dio, figlio del Padre,<br>
+Tu che togli i peccati, i peccati del mondo<br>
+abbi pietà di noi, abbi pietà di noi.<br><br>
+<table>
+    <td style="width: 200px"><span class="verde">Tu che togli i peccati,<br>i peccati del mondo,</span></td>
+    <td style="width: 200px">Tu che togli i peccati,<br>i peccati del mondo,</td>
+</table>
+accogli, accogli la nostra supplica.<br><br>
+Tu che siedi alla destra, alla destra del Padre,<br>
+abbi pietà di noi, abbi pietà di noi.<br><br><br>
+<table>
+<td style="width: 200px"><span class="verde">Perché Tu solo il Santo,<br>Tu solo il Signore,<br>Tu solo l’Altissimo<br>Gesù Cristo,<br></span></td>
+<td style="width: 200px">Perché Tu solo il Santo,<br>Tu solo il Signore,<br>Tu solo l’Altissimo<br>Gesù Cristo,<br></td>
+</table>
+con lo Spirito Santo nella gloria di Dio Padre. Amen.<br><br>
+<table>
+    <td style="width: 200px"><span class="verde">Con lo Spirito<br>Santo</span></td>
+    <td style="width: 200px">Con lo Spirito Santo<br>nella gloria di Dio Padre</td>
+</table>
+nella gloria di Dio Padre.<br>
+<table>
+    <td style="width: 200px"><span class="verde">Amen.</span></td><td style="width: 200px">Amen.</td>
+</table><br>
+nella gloria di Dio Padre. Amen.<br>
+<br>
+
+</div>
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

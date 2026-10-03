@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a, .toggleGiovani {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300;
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover, .toggleGiovani:hover {
+    background-color: #BF8F00;
+    color: white;
+}
+
+.voceBox a.attivo, .toggleGiovani.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}
+
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none;
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+</head>
+
+<body>
+
+
+<h2>
+A1. La via per il cielo
+</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<!-- PULSANTE GIOVANI -->
+<div style="margin-top:20px; max-width:600px;">
+    <a class="toggleGiovani" onclick="toggleGiovani()">Giovani</a>
+</div>
+
+
+
+<div id="ragazze" class="voce">
+<ol>
+<li>
+Come lui ogni giorno sono qui davanti a Te<br>
+per scoprire quel che c’è dentro al mio cuore.<br>
+Ho imparato che il segreto è nel pane che hai spezzato,<br>
+è questa l’autostrada verso il Cielo.<br><br>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Come lui ogni giorno sono qui davanti a Te,<br>
+per scoprire come essere felice.<br>
+Ho capito che la vita ci è donata per amare,<br>
+è per questo che nasciamo originali.<br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Come lui ogni giorno vedo che accanto a me<br>
+c’è un amico che ha bisogno del mio aiuto.<br>
+Ho imparato che la fede è portare il tuo amore<br>
+nel cuore di chi è solo e senza luce.<br><br>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Non perder tempo, sii luce nel mondo <br>
+per annunciare la gioia che è in te<br>
+Ora lo sai: tocca a te! Sì, tocca a te!<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te. (3v)<br>
+</b>
+</ol>
+</div>
+
+
+<div id="femmine" class="voce">
+<ol>
+<li><span class="verde">
+Come lui ogni giorno sono qui davanti a Te<br>
+per scoprire quel che c’è dentro al mio cuore.<br>
+Ho imparato che il segreto è nel pane che hai spezzato,<br>
+è questa l’autostrada verso il Cielo.<br><br></span>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Come lui ogni giorno sono qui davanti a Te,<br>
+per scoprire come essere felice.<br>
+Ho capito che la vita ci è donata per amare,<br>
+è per questo che nasciamo originali.</span><br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Come lui ogni giorno vedo che accanto a me<br>
+c’è un amico che ha bisogno del mio aiuto.<br>
+Ho imparato che la fede è portare il tuo amore<br>
+nel cuore di chi è solo e senza luce.</span><br><br>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Non perder tempo, sii luce nel mondo <br>
+per annunciare la gioia che è in te<br>
+Ora lo sai: tocca a te! Sì, tocca a te!<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te. (3v)<br>
+</b>
+</ol>
+</div>
+
+
+
+
+<div id="ragazzi" class="voce">
+<ol>
+<li>
+Come lui ogni giorno sono qui davanti a Te<br>
+per scoprire quel che c’è dentro al mio cuore.<br>
+Ho imparato che il segreto è nel pane che hai spezzato,<br>
+è questa l’autostrada verso il Cielo.<br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Come lui ogni giorno sono qui davanti a Te,<br>
+per scoprire come essere felice.<br>
+Ho capito che la vita ci è donata per amare,<br>
+è per questo che nasciamo originali.<br><br>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Come lui ogni giorno vedo che accanto a me<br>
+c’è un amico che ha bisogno del mio aiuto.<br>
+Ho imparato che la fede è portare il tuo amore<br>
+nel cuore di chi è solo e senza luce.<br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Non perder tempo, sii luce nel mondo <br>
+per annunciare la gioia che è in te<br>
+Ora lo sai: tocca a te! Sì, tocca a te!<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te. (3v)<br>
+</b>
+</ol>
+</div>
+
+
+
+<div id="maschi" class="voce">
+<ol>
+<li><span class="verde">
+Come lui ogni giorno sono qui davanti a Te<br>
+per scoprire quel che c’è dentro al mio cuore.<br>
+Ho imparato che il segreto è nel pane che hai spezzato,<br>
+è questa l’autostrada verso il Cielo.</span><br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Come lui ogni giorno sono qui davanti a Te,<br>
+per scoprire come essere felice.<br>
+Ho capito che la vita ci è donata per amare,<br>
+è per questo che nasciamo originali.</span><br><br>
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li><span class="verde">
+Come lui ogni giorno vedo che accanto a me<br>
+c’è un amico che ha bisogno del mio aiuto.<br>
+Ho imparato che la fede è portare il tuo amore<br>
+nel cuore di chi è solo e senza luce.</span><br><br><span class="verde">
+Seguo Te col tuo amore che mi spinge più lontano,<br>
+la tua voce che mi guida indica il cammino.<br></span>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te.<br>
+<br>
+</b>
+<li>
+Non perder tempo, sii luce nel mondo <br>
+per annunciare la gioia che è in te<br>
+Ora lo sai: tocca a te! Sì, tocca a te!<br>
+<br>
+</li>
+<b>
+Sei Tu la via per il Cielo, <br>
+con Te al mio fianco paura non ho.<br>
+Sei Tu la via per il Cielo,<br>
+e scopro la luce che è dentro di me, che è dentro di te. (3v)<br>
+</b>
+</ol>
+</div>
+
+
+
+<script>
+/* Alias base (senza giovani) */
+const aliasBase = {
+    soprani: "femmine",
+    contralti: "femmine",
+    tenori: "maschi",
+    bassi: "maschi"
+};
+
+/* Alias giovani */
+const aliasGiovani = {
+    soprani: "ragazze",
+    contralti: "ragazze",
+    tenori: "ragazzi",
+    bassi: "ragazzi"
+};
+
+/* Selezione voce */
+function mostraVoce(voce) {
+    const giovani = localStorage.getItem("giovaniAttivo") === "true";
+
+    const voceReale = giovani ? aliasGiovani[voce] : aliasBase[voce];
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni voce
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    const btnAttivo = document.querySelector(`.voceBox a[data-voce="${voce}"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+
+    // Evidenziazione pulsante giovani
+    const btnGiovani = document.querySelector(".toggleGiovani");
+    if (giovani) btnGiovani.classList.add("attivo");
+    else btnGiovani.classList.remove("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+/* Toggle Giovani */
+function toggleGiovani() {
+    const stato = localStorage.getItem("giovaniAttivo") === "true";
+    localStorage.setItem("giovaniAttivo", !stato);
+
+    // Ricarica la voce preferita
+    const voceSalvata = localStorage.getItem('vocePreferita') || "soprani";
+    mostraVoce(voceSalvata);
+}
+
+/* Caricamento iniziale */
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita') || "soprani";
+
+    // Se non esiste, inizializza giovani a false
+    if (localStorage.getItem("giovaniAttivo") === null) {
+        localStorage.setItem("giovaniAttivo", false);
+    }
+
+    mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

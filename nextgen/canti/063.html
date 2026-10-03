@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+<h2>63. Come tu mi vuoi</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<!-- SEZIONE SOPRANI -->
+<div id="soprani" class="voce">
+    <ol><li>
+    <span class="verde">
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    </span>
+    Se Tu lo vuoi, Signore manda me<br>e il tuo nome annuncerò.<br>
+    </li><br>
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>come Tu mi vuoi.
+    </b>
+    <br><br>
+    <li>
+    <span class="verde">
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    </span>
+    Tra le tue mani mai più vacillerò<br>e strumento tuo sarò. </li><br>
+
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>
+    come Tu mi vuoi.<br></b>
+    Come Tu mi vuoi;<br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi.
+    </ol>
+</div>
+
+<!-- SEZIONE CONTRALTI -->
+<div id="contralti" class="voce">
+    <ol><li>
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    <span class="verde">
+    Se Tu lo vuoi, Signore manda me<br>e il tuo nome annuncerò.<br>
+    </span>
+    </li><br>
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>come Tu mi vuoi.
+    </b>
+    <br><br>
+    <li>
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    <span class="verde">
+    Tra le tue mani mai più vacillerò<br>e strumento tuo sarò. </li><br>
+    </span>
+
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>
+    come Tu mi vuoi.<br></b>
+    Come Tu mi vuoi;<br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi, <span class="verde">(io sarò)</span><br>
+    come Tu mi vuoi.
+    </ol>
+</div>
+
+<!-- SEZIONE TENORI -->
+<div id="tenori" class="voce">
+    <ol><li>
+    <span class="verde">
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    </span>
+    Se Tu lo vuoi, Signore manda me<br>e il tuo nome annuncerò.<br>
+    </li><br>
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>come Tu mi vuoi.
+    </b>
+    <br><br>
+    <li>
+    <span class="verde">
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    </span>
+    Tra le tue mani mai più vacillerò<br>e strumento tuo sarò. </li><br>
+
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>
+    come Tu mi vuoi.<br></b>
+    Come Tu mi vuoi;<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    come Tu mi vuoi.
+    </ol>
+</div>
+
+<!-- SEZIONE BASSI -->
+<div id="bassi" class="voce">
+    <ol><li>
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    <span class="verde">
+    Se Tu lo vuoi, Signore manda me<br>e il tuo nome annuncerò.<br>
+    </span>
+    </li><br>
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>come Tu mi vuoi.
+    </b>
+    <br><br>
+    <li>
+    Eccomi Signor, vengo a Te mio Re,<br>che si compia in me la tua volontà.<br>
+    Eccomi Signor, vengo a Te mio Dio,<br>plasma il cuore mio e di Te vivrò.<br>
+    <span class="verde">
+    Tra le tue mani mai più vacillerò<br>e strumento tuo sarò. </span></li><br>
+    
+
+    <b>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò, <br>
+    questa vita io voglio donarla a Te<br>
+    per dar gloria al tuo nome, mio Re! <br>
+    Come Tu mi vuoi io sarò,<br>dove Tu mi vuoi io andrò. <br>
+    Se mi guida il tuo amore paura non ho, <br>
+    per sempre io sarò<br>
+    come Tu mi vuoi.<br></b>
+    Come Tu mi vuoi;<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    <span class="verde">(come Tu mi vuoi,)</span> io sarò<br>
+    come Tu mi vuoi.
+    </ol>
+
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni
+    document.getElementById('soprani').style.display = 'none';
+    document.getElementById('contralti').style.display = 'none';
+    document.getElementById('tenori').style.display = 'none';
+    document.getElementById('bassi').style.display = 'none';
+
+    // Mostra quella selezionata
+    document.getElementById(voce).style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo
+    const btnAttivo = document.querySelector(`.voceBox a[onclick="selezionaVoce('${voce}')"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+
+</body>
+</html>
+

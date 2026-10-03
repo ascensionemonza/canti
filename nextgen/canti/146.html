@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+
+
+<h2>
+146.	Laudato sii Signore mio<br>
+
+</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="soprani" class="voce">
+
+<ol>
+
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+
+
+	<table>
+		<td style="width: 250px;">
+			<li><span class="verde">
+				Per il sole d’ogni giorno<br>che riscalda e dona vita:<br>
+				egli illumina il cammino<br>di chi cerca Te Signore.<br>
+				<br>
+				Per la luna e per le stelle:<br>io le sento mie sorelle,<br>
+				le hai formate su nel cielo<br>e le doni a chi è nel buio.<br>
+			</li></span>
+		</td>
+		<td style="width: 250px;">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+		</td>
+	</table>
+
+
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+
+	<table>
+		<td style="width: 250px;">
+			<li><span class="verde">
+				Per la nostra madre terra<br>che ci dona fiori ed erba:<br>
+				su di lei noi fatichiamo<br>per il pane d’ogni giorno.<br>
+				<br>
+				Per chi soffre con coraggio<br>e perdona nel tuo amore:<br>
+				Tu gli dai la pace tua<br>alla sera della vita.<br>
+			</li></span>
+		</td>
+		<td style="width: 250px;">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+		</td>
+	</table>
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+	<table>
+		<td style="width: 250px;">
+			<li><span class="verde">
+				Per la morte che è di tutti:<br>io la sento ogni istante;<br>
+				ma se vivo nel tuo amore<br>dona un senso alla mia vita.<br>
+				<br>
+				Per l’amore che è nel mondo<br>tra una donna e l’uomo suo,<br>
+				per la vita dei bambini<br>che il mondo fanno nuovo.<br>
+			</li></span>
+		</td>
+		<td style="width: 250px;">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+		</td>
+	</table>
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+	<table>
+		<td style="width: 250px;">
+			<li><span class="verde">
+				Io ti canto mio Signore<br>e con me la creazione<br>
+				ti ringrazia umilmente<br>perché Tu sei il Signore.<br>
+				<br>
+				<b>
+					Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+					laudato sii Signore mio,<br>laudato sii Signore mio.<br>
+				</b></span>
+			</li>
+		<td style="width: 250px;">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br><b>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br></b>
+		</td>
+	</table>
+
+
+</ol>
+
+</div>
+
+
+
+<div id="altri" class="voce">
+
+<ol>
+
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+
+
+	<table>
+		<td style="width: 250px;">
+			<li>
+				Per il sole d’ogni giorno<br>che riscalda e dona vita:<br>
+				egli illumina il cammino<br>di chi cerca Te Signore.<br>
+				<br>
+				Per la luna e per le stelle:<br>io le sento mie sorelle,<br>
+				le hai formate su nel cielo<br>e le doni a chi è nel buio.<br>
+			</li>
+		</td>
+		<td style="width: 250px;">
+			<span class="verde">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+			</span>
+		</td>
+	</table>
+
+
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+
+	<table>
+		<td style="width: 250px;">
+			<li>
+				Per la nostra madre terra<br>che ci dona fiori ed erba:<br>
+				su di lei noi fatichiamo<br>per il pane d’ogni giorno.<br>
+				<br>
+				Per chi soffre con coraggio<br>e perdona nel tuo amore:<br>
+				Tu gli dai la pace tua<br>alla sera della vita.<br>
+			</li>
+		</td>
+		<td style="width: 250px;">
+			<span class="verde">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+			</span>
+		</td>
+	</table>
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+	<table>
+		<td style="width: 250px;">
+			<li>
+				Per la morte che è di tutti:<br>io la sento ogni istante;<br>
+				ma se vivo nel tuo amore<br>dona un senso alla mia vita.<br>
+				<br>
+				Per l’amore che è nel mondo<br>tra una donna e l’uomo suo,<br>
+				per la vita dei bambini<br>che il mondo fanno nuovo.<br>
+			</li>
+		</td>
+		<td style="width: 250px;">
+			<span class="verde">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+			</span>
+		</td>
+	</table>
+<br>
+<b>
+	Laudato sii Signore mio, laudato sii Signore mio,<br>
+	laudato sii Signore mio, laudato sii Signore mio.<br>
+<br>
+</b>
+	<table>
+		<td style="width: 250px;">
+			<li>
+				Io ti canto mio Signore<br>e con me la creazione<br>
+				ti ringrazia umilmente<br>perché Tu sei il Signore.<br>
+				<br>
+				<b>
+					Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+					laudato sii Signore mio,<br>laudato sii Signore mio.<br>
+				</b>
+			</li>
+		<td style="width: 250px;">
+			<span class="verde">
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br>	
+				<br><b>
+				Laudato sii Signore mio,<br>laudato sii Signore mio,<br>
+				laudato sii Signore mio,<br>laudato sii, laudato sii.<br></b>
+			</span>
+		</td>
+	</table>
+
+
+</ol>
+
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        contralti: "altri",
+        tenori: "altri",
+        bassi: "altri"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>
+

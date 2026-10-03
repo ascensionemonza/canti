@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+
+<h2>
+130.	In questa notte splendida<br>
+
+</h2>
+
+
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+
+<div id="femmine" class="voce">
+
+<ol>
+
+
+<li>
+<span class="verde">
+In questa notte splendida di luce e di chiaror<br>
+il nostro cuore trepida: è nato il Salvator!<br></span>
+
+Un bimbo piccolissimo le porte ci aprirà<br>
+del cielo dell'Altissimo nella sua Verità.<br>
+<br>
+</li>
+
+<li>
+<span class="verde">
+Svegliatevi dal sonno, correte coi pastor:<br>
+è notte di miracoli di grazia e di stupor!<br></span>
+Asciuga le tue lacrime, non piangere perché<br></span>
+Gesù nostro carissimo è nato anche per te.<br>
+<br>
+</li>
+
+<li>
+<span class="verde">
+In questa notte limpida di gloria e di splendor<br>
+il nostro cuore trepida: è nato il Salvator!<br></span>
+Gesù nostro carissimo le porte ci aprirà,<br>
+il Figlio dell'Altissimo con noi sempre sarà!<br>
+</li>
+
+
+</ol>
+</div>
+
+
+
+
+
+<div id="maschi" class="voce">
+
+<ol>
+
+
+<li>
+In questa notte splendida di luce e di chiaror<br>
+il nostro cuore trepida: è nato il Salvator!<br>
+<span class="verde">
+Un bimbo piccolissimo le porte ci aprirà<br></span>
+del cielo dell'Altissimo nella sua Verità.<br>
+<br>
+</li>
+
+<li>
+Svegliatevi dal sonno, correte coi pastor:<br>
+è notte di miracoli di grazia e di stupor!<br>
+<span class="verde">
+Asciuga le tue lacrime, non piangere perché<br></span>
+Gesù nostro carissimo è nato anche per te.<br>
+<br>
+</li>
+
+<li>
+In questa notte limpida di gloria e di splendor<br>
+il nostro cuore trepida: è nato il Salvator!<br>
+<span class="verde">
+Gesù nostro carissimo le porte ci aprirà,<br></span>
+il Figlio dell'Altissimo con noi sempre sarà!<br>
+</li>
+
+
+</ol>
+</div>
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>
+

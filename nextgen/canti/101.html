@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+
+<body>
+<h2>
+101.	Eccomi<br>
+
+</h2>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<!-- SEZIONE SOPRANI -->
+<div id="soprani" class="voce">
+
+<ol>
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li>
+Nel mio Signore ho sperato e su di me s’è chinato,<br>
+ha dato ascolto al mio grido, m’ha liberato dalla morte.<br>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+I miei piedi hai reso saldi, sicuri ha reso i miei passi,<br>
+ha messo sulla mia bocca un nuovo canto di lode.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li>
+Il sacrificio non gradisci, ma m’hai aperto l’orecchio,<br>
+non hai voluto olocausti, allora ho detto: “io vengo”.<br>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Sul tuo libro di me è scritto: “Si compia il tuo volere”.<br>
+Questo, mio Dio, desidero, la tua legge è nel mio cuore.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li>
+La tua giustizia ho proclamato, non tengo chiuse le labbra.<br>
+Non rifiutarmi, Signore, la tua misericordia.<br>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+
+</b>
+</ol>
+</div>
+
+
+
+	
+
+
+
+<!-- SEZIONE CONTRALTI E BASSI -->
+<div id="voci-basse" class="voce">
+
+<ol>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Nel mio Signore ho sperato e su di me s’è chinato,<br>
+ha dato ascolto al mio grido, m’ha liberato dalla morte.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+I miei piedi hai reso saldi, sicuri ha reso i miei passi,<br>
+ha messo sulla mia bocca un nuovo canto di lode.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Il sacrificio non gradisci, ma m’hai aperto l’orecchio,<br>
+non hai voluto olocausti, allora ho detto: “io vengo”.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Sul tuo libro di me è scritto: “Si compia il tuo volere”.<br>
+Questo, mio Dio, desidero, la tua legge è nel mio cuore.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+La tua giustizia ho proclamato, non tengo chiuse le labbra.<br>
+Non rifiutarmi, Signore, la tua misericordia.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+
+</b>
+
+</ol>
+</div>
+
+
+
+
+
+
+
+<!-- SEZIONE TENORI -->
+<div id="tenori" class="voce">
+
+<ol>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Nel mio Signore ho sperato e su di me s’è chinato,<br>
+ha dato ascolto al mio grido, m’ha liberato dalla morte.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li>
+I miei piedi hai reso saldi, sicuri ha reso i miei passi,<br>
+ha messo sulla mia bocca un nuovo canto di lode.<br>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+Il sacrificio non gradisci, ma m’hai aperto l’orecchio,<br>
+non hai voluto olocausti, allora ho detto: “io vengo”.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li>
+Sul tuo libro di me è scritto: “Si compia il tuo volere”.<br>
+Questo, mio Dio, desidero, la tua legge è nel mio cuore.<br>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+<br>
+</b>
+
+<li><span class="verde">
+La tua giustizia ho proclamato, non tengo chiuse le labbra.<br>
+Non rifiutarmi, Signore, la tua misericordia.<br></span>
+<br>
+</li>
+
+<b>
+Eccomi, eccomi, Signore io vengo,<br>
+Eccomi, eccomi, si compia in me la tua volontà.<br>
+
+</b>
+
+</ol>
+</div>
+
+
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        contralti: "voci-basse",
+        bassi: "voci-basse"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

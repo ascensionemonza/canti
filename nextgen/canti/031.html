@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300;
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00;
+    color: white;
+}
+
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}
+
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none;
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
+</style>
+
+</head>
+<body>
+
+<h2>31. Beati quelli</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<!-- SEZIONE SOPRANI -->
+<div id="soprani" class="voce">
+    <ol>
+        <li>
+            Beati quelli che poveri sono, beati quanti son puri di cuore,<br>
+            beati quelli che vivono in pena nell’attesa di un nuovo mattino.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td><span class="verde">Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br></span>
+            </td>
+            <td>
+            
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </td>
+        </table></b>
+        <br>
+
+        <li>
+            Beati quelli che fanno la pace, beati quelli che insegnano amore,<br>
+            beati quelli che hanno la fame e la sete di vera giustizia.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td><span class="verde">Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br></span>
+            </td>
+            <td>
+            
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </td>
+        </table></b>
+        <br>
+
+        <li>
+            Beati quelli che un giorno saranno perseguitati per causa di Cristo,<br>
+            perché nel cuore non hanno violenza ma la forza di questo Vangelo.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td><span class="verde">Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br></span>
+            </td>
+            <td>
+            
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </td>
+        </table></b>
+    </ol>
+</div>
+
+<!-- SEZIONE ALTRI -->
+<div id="altri" class="voce">
+    <ol>
+        <li>
+            Beati quelli che poveri sono, beati quanti son puri di cuore,<br>
+            beati quelli che vivono in pena nell’attesa di un nuovo mattino.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td>Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            </td>
+            <td>
+			<span class="verde">
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </span>
+            </td>
+        </table></b>
+        <br>
+
+        <li>
+            Beati quelli che fanno la pace, beati quelli che insegnano amore,<br>
+            beati quelli che hanno la fame e la sete di vera giustizia.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td>Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            </td>
+            <td>
+			<span class="verde">
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </span>
+            </td>
+        </table></b>
+        <br>
+
+        <li>
+            Beati quelli che un giorno saranno perseguitati per causa di Cristo,<br>
+            perché nel cuore non hanno violenza ma la forza di questo Vangelo.<br><br>
+        </li>
+
+        <b>
+        <table style="width: 600px">
+            <td>Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            Saran beati, vi dico, beati,<br>
+            perché di essi è il regno dei cieli.<br>
+            </td>
+            <td>
+			<span class="verde">
+                <br>Beati, sì,<br>
+                saran beati perché<br>
+                di essi è il regno dei cieli.<br>
+            </span>
+            </td>
+        </table></b>
+    </ol>
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        contralti: "altri",
+        tenori: "altri",
+        bassi: "altri"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>
