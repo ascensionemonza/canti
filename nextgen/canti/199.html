@@ -1,134 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
 199.	Prima Corinzi tredici<br>
 </h2>
 
-<i>
-    <span style="color:rgb(243, 64, 249)">soprani</span><br>
-    <span style="color:rgb(147, 24, 255)">soprani e tenori</span><br>
-    <span style="color:green">contralti e tenori</span><br>
-    <span style="color:rgb(53, 0, 229)">contralti e bassi</span><br>
-    <span style="color:blue">bassi</span>
-</i><br><br>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<ol>
+<div id="soprani" class="voce">
 
-<li><span style="color:rgb(53, 0, 229)">
-Anche se io co-[noscessi] e parlassi<br>
-la lingua di ogni - [creatu]ra di Dio,<br>
-anche se un giorno a-[rrivassi] a capire i misteri<br>
-e le forze che spi-ngono il mo-ndo,<br></span><br>
-<span style="color:rgb(147, 24, 255)">
-anche se dalla - [mia boc]ca venissero scienza<br>
-e parole i-[spira]-te dal cie-lo<br>
-e possedessi - pienezza di fede<br>
-da muovere i monti e riempi-re le va-lli.<br></span>
-<br>
-</li>
-<b>
-<table>
-<td style="width: 310px;"><span style="color:rgb(243, 64, 249)">
-Ma non a<span style="color:blue">^</span>vessi la carità,<br>
-risuonerei come un bronzo.<br>
-Se non donassi la vita ogni giorno<br>
-sarei come un timpano<br>
-che vibra da solo.<br>
-Se non a<span style="color:blue">^</span>vessi la carità<br>
-non servirebbero a nulla<br>
-gesti d’amore,<br>
-sorrisi di pace:<br>
-sarei come un cembalo<br>
-che suona per sé.<br>
-</span></td>
-<td style="width: 260px;"><span style="color:blue">
-Ma non a<span style="color:green">^</span>vessi la carità,<br>
-risuonerei come un bronzo.<br>
-Se... la vita ogni giorno<br>
-sarei...<br>
-...solo.<br>
-Se non a<span style="color:green">^</span>vessi la carità<br>
-non servirebbero<br>
-a nulla<br>
-sa-rei<br>
-come un cembalo<br>
-suona per sé.<br>
-</span></td>
-<td style="width: 240px;"><span style="color:green">
-Ma non avessi la carità,<br>
-risuonerei come un bronzo.<br>
-La vita ogni giorno<br>
-sarei...<br>
-...solo.<br>
-Se non avessi la carità<br>
-non servirebbero<br>
-a nulla<br>
-sorrisi di pace,<br>
-sarei<br>
-suona per sé.<br>
-</span></td>
+    <ol>
 
-</table>
-</b>
-<br>
-<li><span style="color:rgb(53, 0, 229)">
-La carità è - [pazien]te e benigna,<br>
-conosce il rispetto, - [non ce]rca intere-sse;<br>
-la carità non - [si adi]ra, del torto subito<br>
-non serba - [nessu]na [memo]-ria.<br></span><br>
-<span style="color:rgb(147, 24, 255)">
-La carità non - [soppo]rta ingiustizie,<br>
-dal falso rifugge, - [del ve]-ro si nutre;<br>
-la carità si ap-[passio]na di tutto,<br>
-di tutto ha speranza, - [di tu]-tto ha fidu-cia.<br>
-<br>
-</li>
-<b>
-<table>
-<td style="width: 310px;"><span style="color:rgb(243, 64, 249)">
-Non avrà <span style="color:blue">^</span> fine la carità,<br>
-scompariranno i profeti.<br>
-Solo tre doni per noi resteranno:<br>
-la fede, l’amore e ancora speranza.<br>
-Ma più impor<span style="color:blue">^</span>tante è la carità,<br>
-più forte di ogni sapienza.<br>
-Ciò che è perfetto verrà, sarà<br>
-un mondo di gioia e di pace<br>
-che ci attenderà.<br>
-</span></td>
-<td style="width: 290px;"><span style="color:blue">
-Non avrà <span style="color:green">^</span> fine la carità,<br>
-scompariranno i profeti.<br>
-Re-steranno<br>
-la fede, l’amore, speranza.<br>
-Ma più impor<span style="color:green">^</span>tante è la carità,<br>
-più forte di ogni sapienza.<br>
-Sarà<br>
-un mondo di gioia,<br>
-ci attenderà.<br>
-</span></td>
-<td style="width: 290px;"><span style="color:green">
-Non avrà fine la carità,<br>
-scompariranno i profeti.<br>
-Tre doni per noi resteranno:<br>
-speranza.<br>
-Ma più importante è la carità,<br>
-più forte di ogni sapienza.<br>
-Verrà<br>
-sarà un mondo di gioia,<br>
-ci attenderà.<br>
-</span></td>
-</table>
-
-</b>
+    <li><span class="verde">
+    Anche se io conoscessi e parlassi la lingua di ogni creatura di Dio,<br>
+    anche se un giorno arrivassi a capire i misteri<br>
+    e le forze che spingono il mondo,<br></span>
+    anche se dalla mia bocca venissero scienza e parole ispirate dal cielo<br>
+    e possedessi pienezza di fede da muovere i monti e riempire le valli.<br>
+    <br>
+    </li>
+    <b>
+    Ma non avessi la carità, risuonerei come un bronzo.<br>
+    Se non donassi la vita ogni giorno<br>
+    sarei come un timpano che vibra da solo.<br>
+    Se non avessi la carità non servirebbero a nulla<br>
+    gesti d’amore, sorrisi di pace:<br>
+    sarei come un cembalo che suona per sé.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    La carità è paziente e benigna,<br>
+    conosce il rispetto, non cerca interesse;<br>
+    la carità non si adira, del torto subito non serba nessuna memoria.<br></span>
+    La carità non sopporta ingiustizie, dal falso rifugge, del vero si nutre;<br>
+    la carità si appassiona di tutto, di tutto ha speranza,<br>
+    di tutto ha fiducia.<br>
+    <br>
+    </li>
+    <b>
+    Non avrà fine la carità, scompariranno i profeti.<br>
+    Solo tre doni per noi resteranno:<br>
+    la fede, l’amore e ancora speranza.<br>
+    Ma più importante è la carità, più forte di ogni sapienza.<br>
+    Ciò che è perfetto verrà, sarà<br>
+    un mondo di gioia e di pace che ci attenderà.
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+
+<div id="contralti" class="voce">
+
+    <ol>
+
+    <li>
+    Anche se io conoscessi e parlassi la lingua di ogni creatura di Dio,<br>
+    anche se un giorno arrivassi a capire i misteri<br>
+    e le forze che spingono il mondo,<br><span class="verde">
+    anche se dalla mia bocca venissero scienza e parole ispirate dal cielo<br>
+    e possedessi pienezza di fede da muovere i monti e riempire le valli.<br></span>
+    <br>
+    </li>
+    <b>
+    Ma non avessi la carità, risuonerei come un bronzo.<br>
+    La vita ogni giorno<br>
+    sarei solo.<br>
+    Se non avessi la carità non servirebbero a nulla<br>
+    sorrisi di pace:<br>
+    sarei suona per sé.<br>
+    <br>
+    </b>
+    <li>
+    La carità è paziente e benigna,<br>
+    conosce il rispetto, non cerca interesse;<br>
+    la carità non si adira, del torto subito non serba nessuna memoria.<br><span class="verde">
+    La carità non sopporta ingiustizie, dal falso rifugge, del vero si nutre;<br>
+    la carità si appassiona di tutto, di tutto ha speranza,<br>
+    di tutto ha fiducia.<br></span>
+    <br>
+    </li>
+    <b>
+    Non avrà fine la carità, scompariranno i profeti.<br>
+    Tre doni per noi resteranno:<br>
+    speranza.<br>
+    Ma più importante è la carità, più forte di ogni sapienza.<br>
+    Verrà, sarà<br>
+    un mondo di gioia ci attenderà.
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+
+
+<div id="tenori" class="voce">
+
+    <ol>
+
+    <li><span class="verde">
+    Anche se io conoscessi e parlassi la lingua di ogni creatura di Dio,<br>
+    anche se un giorno arrivassi a capire i misteri<br>
+    e le forze che spingono il mondo,<br></span>
+    anche se dalla mia bocca venissero scienza e parole ispirate dal cielo<br>
+    e possedessi pienezza di fede da muovere i monti e riempire le valli.<br>
+    <br>
+    </li>
+    <b>
+    Ma non avessi la carità, risuonerei come un bronzo.<br>
+    La vita ogni giorno<br>
+    sarei solo.<br>
+    Se non avessi la carità non servirebbero a nulla<br>
+    sorrisi di pace:<br>
+    sarei suona per sé.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    La carità è paziente e benigna,<br>
+    conosce il rispetto, non cerca interesse;<br>
+    la carità non si adira, del torto subito non serba nessuna memoria.<br></span>
+    La carità non sopporta ingiustizie, dal falso rifugge, del vero si nutre;<br>
+    la carità si appassiona di tutto, di tutto ha speranza,<br>
+    di tutto ha fiducia.<br>
+    <br>
+    </li>
+    <b>
+    Non avrà fine la carità, scompariranno i profeti.<br>
+    Tre doni per noi resteranno:<br>
+    speranza.<br>
+    Ma più importante è la carità, più forte di ogni sapienza.<br>
+    Verrà, sarà<br>
+    un mondo di gioia ci attenderà.
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+
+
+<div id="bassi" class="voce">
+
+    <ol>
+
+    <li>
+    Anche se io conoscessi e parlassi la lingua di ogni creatura di Dio,<br>
+    anche se un giorno arrivassi a capire i misteri<br>
+    e le forze che spingono il mondo,<br><span class="verde">
+    anche se dalla mia bocca venissero scienza e parole ispirate dal cielo<br>
+    e possedessi pienezza di fede da muovere i monti e riempire le valli.<br></span>
+    <br>
+    </li>
+    <b>
+    Ma non avessi la carità, risuonerei come un bronzo.<br>
+    Se ... la vita ogni giorno<br>
+    sarei solo.<br>
+    Se non avessi la carità non servirebbero a nulla<br>
+    sarei come un cembalo<br>
+    suona per sé.<br>
+    <br>
+    </b>
+    <li>
+    La carità è paziente e benigna,<br>
+    conosce il rispetto, non cerca interesse;<br>
+    la carità non si adira, del torto subito non serba nessuna memoria.<br><span class="verde">
+    La carità non sopporta ingiustizie, dal falso rifugge, del vero si nutre;<br>
+    la carità si appassiona di tutto, di tutto ha speranza,<br></span>
+    di tutto ha fiducia.<br>
+    <br>
+    </li>
+    <b>
+    Non avrà fine la carità, scompariranno i profeti.<br>
+    Resteranno:<br>
+    la fede, l’amore, speranza.<br>
+    Ma più importante è la carità, più forte di ogni sapienza.<br>
+    Sarà<br>
+    un mondo di gioia, ci attenderà.
+    </b>
+
+
+    </ol>
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni
+    document.getElementById('soprani').style.display = 'none';
+    document.getElementById('contralti').style.display = 'none';
+    document.getElementById('tenori').style.display = 'none';
+    document.getElementById('bassi').style.display = 'none';
+
+    // Mostra quella selezionata
+    document.getElementById(voce).style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo
+    const btnAttivo = document.querySelector(`.voceBox a[onclick="selezionaVoce('${voce}')"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+
+</body>
+</html>
+

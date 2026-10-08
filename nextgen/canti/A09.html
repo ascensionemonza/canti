@@ -1,97 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+<body>
 
 <h2>
 A9. Non di solo pane
 </h2>
-<i>
-    <span style="color:rgb(243, 64, 249)">soprani</span><br>
-    <span style="color:#9a02c0">contralti + tenori + bassi (leggero)</span><br>
-    <span style="color:green">4 voci</span><br>
-    <span style="color:red">5 soprani e 1 contralto</span><br>
-</i><br><ol>
 
-<b>
-Miserere, miserere mei, Domine!<br>
-Miserere, miserere mei.<br>
+
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 <br>
-</b>
-<table>
-    <td style="width: 290px"><li>
-        <span style="color:#9a02c0">
-            Mise<span style="color:rgb(243, 64, 249)">^</span>rere, miserere mei, Domine!<br>
-            Miserere,<br>miserere mei.<br>
-        </span><br>
-        <span style="color:green"><b>
-            Mi<span style="color:red">^</span>serere Domine!<br>
-            Miserere mei.<br></b>
-        </span><br><li>
-        <span style="color:#9a02c0">
-            Mise<span style="color:rgb(243, 64, 249)">^</span>rere, miserere mei, Domine!<br>
-            Miserere,<br>miserere mei.<br>
-        </span><br>
-        <span style="color:green"><b>
-            Mi<span style="color:red">^</span>serere Domine!<br>
-            Miserere mei.<br></b>
-        </span><br><li>
-        <span style="color:#9a02c0">
-            Mise<span style="color:rgb(243, 64, 249)">^</span>rere, miserere mei, Domine!<br>
-            Miserere,<br>miserere mei.<br>
-        </span><br>
-        <span style="color:green"><b>
-            Mi<span style="color:red">^</span>serere Domine!<br>
-            Miserere mei.<br></b>
-        </span><br><li>
-        <span style="color:#9a02c0">
-            Mise<span style="color:rgb(243, 64, 249)">^</span>rere, miserere mei, Domine!<br>
-            Miserere,<br>miserere mei.<br>
-        </span>
-    </td>    
+<div class="voceBox">
+    <a data-voce="specialeA09" style="width: 588px;" onclick="selezionaVoce('specialeA09')">5 soprani e 1 contralto</a>
+</div>
 
-    <td style="width: 300px">
-        <span style="color:rgb(243, 64, 249)">
-            Non di solo pane - vivrà l'uomo,<br>
-            ma di ogni parola<br>che esce dalla bocca di Dio.<br>
-        </span><br>
-        <span style="color:red"><b>
-            Miserere, miserere mei, Domine!<br>
-            Miserere, miserere mei.<br></b>
-        </span><br>
-        <span style="color:rgb(243, 64, 249)">
-            Convertite i cuori - al Vangelo<br>
-            tornate al Signore<br>con azzimi di vera giustizia.<br>
-        </span><br>
-        <span style="color:red"><b>
-            Miserere, miserere mei, Domine!<br>
-            Miserere, miserere mei.<br></b>
-        </span><br>
-        <span style="color:rgb(243, 64, 249)">
-            Non vi sian contese - e discordie<br>
-            e la - cari[tà-ab]bondi<br>con i suoi frutti di pace.<br>
-        </span><br>
-        <span style="color:red"><b>
-            Miserere, miserere mei, Domine!<br>
-            Miserere, miserere mei.<br></b>
-        </span><br>
-        <span style="color:rgb(243, 64, 249)">
-            Noi che ci nutriamo - [di questo pane]<br>
-            saremo un sol corpo,<br>fecondi di bontà e di perdono.<br>
-        </span>
-    </td>
+<!-- SEZIONE SOPRANI -->
+<div id="soprani" class="voce">
+
+    <ol>
+
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Non di solo pane vivrà l'uomo,<br>
+    ma di ogni parola che esce dalla bocca di Dio.<br>
+    <br>
     </li>
-</table>
-        
-<br>
-<b>
-Miserere, miserere mei, Domine!<br>
-Miserere, miserere mei.<br>
-</b>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Convertite i cuori al Vangelo<br>
+    tornate al Signore con azzimi di vera giustizia.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Non vi sian contese e discordie<br>
+    e la carità abbondi con i suoi frutti di pace.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Noi che ci nutriamo di questo pane<br>
+    saremo un sol corpo, fecondi di bontà e di perdono.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
 
-</ol>
+
+    </ol>
+
+</div>
+
+
+<!-- SEZIONE SPECIALE -->
+<div id="specialeA09" class="voce">
+
+    <ol>
+
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Non di solo pane vivrà l'uomo,<br>
+    ma di ogni parola che esce dalla bocca di Dio.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Convertite i cuori al Vangelo<br>
+    tornate al Signore con azzimi di vera giustizia.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Non vi sian contese e discordie<br>
+    e la carità abbondi con i suoi frutti di pace.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Noi che ci nutriamo di questo pane<br>
+    saremo un sol corpo, fecondi di bontà e di perdono.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+
+
+    </ol>
+
+
+
+</div>
+
+
+
+
+<!-- SEZIONE ALTRI -->
+<div id="altri" class="voce">
+
+    <ol>
+
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, Domine!<br>
+    Miserere mei.<br>
+    <br>
+    </b>
+    <li>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </li>
+    <b>
+    Miserere, miserere mei, Domine!<br>
+    Miserere, miserere mei.<br>
+    <br>
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        contralti: "altri",
+        tenori: "altri",
+        bassi: "altri"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll(".voce").forEach(v => {
+        v.style.display = "none";
+    });
+
+    // Mostra la sezione richiesta
+    const target = document.getElementById(voceReale);
+    if (target) {
+        target.style.display = "block";
+    }
+
+    // Aggiorna evidenziazione pulsanti
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    const btnAttivo =
+        document.querySelector(`.voceBox a[data-voce="${voce}"]`);
+
+    if (btnAttivo) {
+        btnAttivo.classList.add("attivo");
+    }
+}
+
+
+function selezionaVoce(voce) {
+
+    if (voce === "specialeA09") {
+
+        // Salva la scelta speciale
+        localStorage.setItem("vocePreferitaA09", voce);
+
+    } else {
+
+        // Salva la voce normale
+        localStorage.setItem("vocePreferita", voce);
+
+        // Disattiva eventuale scelta speciale
+        localStorage.removeItem("vocePreferitaA09");
+    }
+
+    mostraVoce(voce);
+}
+
+
+window.onload = function() {
+
+    // Priorità assoluta alla voce speciale
+    let voceSalvata = localStorage.getItem("vocePreferitaA09");
+
+    // Se non esiste, usa la preferita normale
+    if (!voceSalvata) {
+        voceSalvata = localStorage.getItem("vocePreferita");
+    }
+
+    // Mostra la voce salvata
+    if (voceSalvata) {
+        mostraVoce(voceSalvata);
+    }
+};
+</script>
+
+</body>
+</html>

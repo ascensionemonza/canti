@@ -1,41 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+
 
 <h2>
 35.	Benedici o Signore
 </h2>
-<ol>
 
-<li>
-Nebbia e freddo, giorni lunghi e amari, mentre il seme muore.<br>
-Poi il prodigio antico e sempre nuovo del primo filo d’erba.<br>
-E nel vento dell’estate ondeggiano le spighe, avremo ancora pane.<br>
-<br>
-</li>
 
-<b>
-Benedici, o Signore, questa offerta che portiamo a Te.<br>
-Facci uno come il pane che anche oggi hai dato a noi.<br>
-<br>
-</b>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li>
-Nei filari, dopo il lungo inverno fremono le viti.<br>
-La rugiada avvolge nel silenzio i primi tralci verdi.<br>
-Poi i colori dell’autunno coi grappoli maturi, avremo ancora vino.<br>
-<br>
-</li>
+<div id="altri" class="voce">
+    <ol>
 
-<b>
-Benedici o Signore questa offerta che portiamo a Te.<br>
-Facci uno come il vino che anche oggi hai dato a noi.<br>
-<br>
-Benedici, o Signore, questa offerta che portiamo a Te.<br>
-Facci uno come il pane che anche oggi hai dato a noi.
-</b>
+    <li>
+    Nebbia e freddo, giorni lunghi e amari, mentre il seme muore.<br>
+    Poi il prodigio antico e sempre nuovo del primo filo d’erba.<br>
+    E nel vento dell’estate ondeggiano le spighe, avremo ancora pane.<br>
+    <br>
+    </li>
 
-</ol>
+    <b>
+    Benedici, o Signore, questa offerta che portiamo a Te.<br>
+    Facci uno come il pane che anche oggi hai dato a noi.<br>
+    <br>
+    </b>
 
-<br><br>
+    <li>
+    Nei filari, dopo il lungo inverno fremono le viti.<br>
+    La rugiada avvolge nel silenzio i primi tralci verdi.<br>
+    Poi i colori dell’autunno coi grappoli maturi, avremo ancora vino.<br>
+    <br>
+    </li>
+
+    <b>
+    Benedici o Signore questa offerta che portiamo a Te.<br>
+    Facci uno come il vino che anche oggi hai dato a noi.<br>
+    <br>
+    Benedici, o Signore, questa offerta che portiamo a Te.<br>
+    Facci uno come il pane che anche oggi hai dato a noi.
+    </b>
+
+    </ol>
+
+</div>
+
+
+
+<div id="contralti" class="voce">
+    <ol>
+
+    <li>
+    Nebbia e freddo, giorni lunghi e amari, mentre il seme muore.<br>
+    Poi il prodigio antico e sempre nuovo del primo filo d’erba.<br>
+    E nel vento dell’estate ondeggiano le spighe, avremo ancora pane.<br>
+    <br>
+    </li>
+
+    <b>
+    Benedici, o Signore, questa offerta... che portiamo a Te.<br>
+    Facci uno... che anche oggi hai dato a noi.<br>
+    <br>
+    </b>
+
+    <li>
+    Nei filari, dopo il lungo inverno fremono le viti.<br>
+    La rugiada avvolge nel silenzio i primi tralci verdi.<br>
+    Poi i colori dell’autunno coi grappoli maturi, avremo ancora vino.<br>
+    <br>
+    </li>
+
+    <b>
+    Benedici, o Signore, questa offerta... che portiamo a Te.<br>
+    Facci uno... che anche oggi hai dato a noi.<br>
+    <br>
+    Benedici, o Signore, questa offerta... che portiamo a Te.<br>
+    Facci uno... che anche oggi hai dato a noi.<br>
+    </b>
+
+    </ol>
+
+</div>
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "altri",
+        tenori: "altri",
+        bassi: "altri"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

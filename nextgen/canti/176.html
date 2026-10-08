@@ -1,66 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
 176.	Notte di luce<br>
 </h2>
-<i>dare note a soprani e contralti</i>
-<br><br>
-<ol>
-
-<li><span style="color:rgb(243, 64, 249)">
-Notte di luce, colma è l’attesa;<br>
-notte di speranza: vieni, Gesù!<br>
-Verbo del Padre, vesti il silenzio.<br></span>
-<br>
-</li>
-<b>
-Sia gloria nei cieli, sia pace quaggiù!<br>
-Sia gloria nei cieli, sia pace quaggiù!<br><br>
-</b>
-<li><span style="color:rgb(243, 64, 249)">
-Alba di pace, Regno che irrompe;<br>
-alba di perdono: vieni, Gesù!<br>
-Santo di Dio, vesti il peccato.<br></span>
-<br>
-</li>
-<b>
-Sia gloria nei cieli, sia pace quaggiù!<br>
-Sia gloria nei cieli, sia pace quaggiù!<br><br>
-</b>
-<li><span style="color:rgb(243, 64, 249)">
-Giorno d’amore, nuova alleanza;<br>
-giorno di salvezza: vieni, Gesù!<br>
-Sposo fedele, vesti la carne.<br></span>
-<br>
-</li>
-<b>
-Sia gloria nei cieli, sia pace quaggiù!<br>
-Sia gloria nei cieli, sia pace quaggiù!<br><br>
-</b>
-[<li>
-Luce che splendi, vinci la notte;<br>
-luce della vita, Verbo tra noi!<br>
-Sei nostra forza, vinci la morte.<br>
-<br>
-</li>
-<b>
-Sia gloria nei cieli, sia pace quaggiù!<br>
-Sia gloria nei cieli, sia pace quaggiù!<br><br>
-</b>
-<li>
-Ecco una stella spunta in oriente,<br>
-luce del cammino, Verbo tra noi!<br>
-Noi t’adoriamo, nostro Signore.<br>
-<br>
-</li>
-<b>
-Sia gloria nei cieli, sia pace quaggiù!<br>
-Sia gloria nei cieli, sia pace quaggiù!
-</b>]
-<br>
 
 
-</ol>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+    <ol>
+
+    <li>
+    Notte di luce, colma è l’attesa;<br>
+    notte di speranza: vieni, Gesù!<br>
+    Verbo del Padre, vesti il silenzio.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li>
+    Alba di pace, Regno che irrompe;<br>
+    alba di perdono: vieni, Gesù!<br>
+    Santo di Dio, vesti il peccato.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li>
+    Giorno d’amore, nuova alleanza;<br>
+    giorno di salvezza: vieni, Gesù!<br>
+    Sposo fedele, vesti la carne.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    [<li>
+    Luce che splendi, vinci la notte;<br>
+    luce della vita, Verbo tra noi!<br>
+    Sei nostra forza, vinci la morte.<br>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li>
+    Ecco una stella spunta in oriente,<br>
+    luce del cammino, Verbo tra noi!<br>
+    Noi t’adoriamo, nostro Signore.<br>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!
+    </b>]
+    <br>
+    </ol>
+
+</div>
+
+
+
+
+<div id="maschi" class="voce">
+    <ol>
+
+    <li><span class="verde">
+    Notte di luce, colma è l’attesa;<br>
+    notte di speranza: vieni, Gesù!<br>
+    Verbo del Padre, vesti il silenzio.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li><span class="verde">
+    Alba di pace, Regno che irrompe;<br>
+    alba di perdono: vieni, Gesù!<br>
+    Santo di Dio, vesti il peccato.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li><span class="verde">
+    Giorno d’amore, nuova alleanza;<br>
+    giorno di salvezza: vieni, Gesù!<br>
+    Sposo fedele, vesti la carne.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    [<li><span class="verde">
+    Luce che splendi, vinci la notte;<br>
+    luce della vita, Verbo tra noi!<br>
+    Sei nostra forza, vinci la morte.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!<br><br>
+    </b>
+    <li><span class="verde">
+    Ecco una stella spunta in oriente,<br>
+    luce del cammino, Verbo tra noi!<br>
+    Noi t’adoriamo, nostro Signore.<br></span>
+    <br>
+    </li>
+    <b>
+    Sia gloria nei cieli, sia pace quaggiù!<br>
+    Sia gloria nei cieli, sia pace quaggiù!
+    </b>]
+    <br>
+    </ol>
+
+</div>
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

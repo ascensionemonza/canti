@@ -1,52 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
-190.	Pane di vita nuova <span style="color:green">- MIb>MI</span><br>
+190.	Pane di vita nuova<br>
 </h2>
-<i>
-    <span style="color:rgb(147, 24, 255)">soprani e tenori</span><br>
-</i>
-<br><br>
 
-<ol>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li><span style="color:rgb(147, 24, 255)">
-Pane di vita nuova, vero cibo dato agli uomini,<br>
-nutrimento che sostiene il mondo, dono splendido di grazia.<br></span><span style="color:green">
-Tu sei sublime frutto di quell’albero di vita<br>
-che Adamo non poté toccare: ora è in Cristo a noi donato.<br></span>
-<br>
-</li>
-<b><span style="color:green">
-Pane della vita, sangue di salvezza,<br>
-vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br></span>
-</b>
-<li><span style="color:rgb(147, 24, 255)">
-Sei l’Agnello immolato nel cui sangue è la salvezza,<br>
-memoriale della vera Pasqua della nuova Alleanza.<br></span><span style="color:green">
-Manna che nel deserto nutri il popolo in cammino,<br>
-sei sostegno e forza nella prova per la Chiesa in mezzo al mondo.<br></span>
-<br>
-</li>
-<b><span style="color:green">
-Pane della vita, sangue di salvezza,<br>
-vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br></span>
-><br><br></b>
+<div id="voci-alte" class="voce">
 
-<li><span style="color:rgb(147, 24, 255)">
-Vino che ci dà gioia, che riscalda il nostro cuore,<br>
-sei per noi il prezioso frutto della vigna del Signore.<br></span><span style="color:green">
-Dalla vite ai tralci scorre la vitale linfa<br>
-che ci dona la vita divina, scorre il sangue dell’amore.<br></span>
-<br>
-</li>
-<b><span style="color:green">
-Pane della vita, sangue di salvezza,<br>
-vero corpo, vera bevanda, cibo di grazia per il mondo.<br></span>
-</b>
+    <ol>
+
+    <li>
+    Pane di vita nuova, vero cibo dato agli uomini,<br>
+    nutrimento che sostiene il mondo, dono splendido di grazia.<br>
+    Tu sei sublime frutto di quell’albero di vita<br>
+    che Adamo non poté toccare: ora è in Cristo a noi donato.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br>
+    </b>
+    <li>
+    Sei l’Agnello immolato nel cui sangue è la salvezza,<br>
+    memoriale della vera Pasqua della nuova Alleanza.<br>
+    Manna che nel deserto nutri il popolo in cammino,<br>
+    sei sostegno e forza nella prova per la Chiesa in mezzo al mondo.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br>
+    </b>
+    <li>
+    Vino che ci dà gioia, che riscalda il nostro cuore,<br>
+    sei per noi il prezioso frutto della vigna del Signore.<br>
+    Dalla vite ai tralci scorre la vitale linfa<br>
+    che ci dona la vita divina, scorre il sangue dell’amore.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br>
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+<div id="voci-basse" class="voce">
+
+    <ol>
+
+    <li><span class="verde">
+    Pane di vita nuova, vero cibo dato agli uomini,<br>
+    nutrimento che sostiene il mondo, dono splendido di grazia.<br></span>
+    Tu sei sublime frutto di quell’albero di vita<br>
+    che Adamo non poté toccare: ora è in Cristo a noi donato.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br>
+    </b>
+    <li><span class="verde">
+    Sei l’Agnello immolato nel cui sangue è la salvezza,<br>
+    memoriale della vera Pasqua della nuova Alleanza.<br></span>
+    Manna che nel deserto nutri il popolo in cammino,<br>
+    sei sostegno e forza nella prova per la Chiesa in mezzo al mondo.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br><br>
+    </b>
+    <li><span class="verde">
+    Vino che ci dà gioia, che riscalda il nostro cuore,<br>
+    sei per noi il prezioso frutto della vigna del Signore.<br></span>
+    Dalla vite ai tralci scorre la vitale linfa<br>
+    che ci dona la vita divina, scorre il sangue dell’amore.<br>
+    <br>
+    </li>
+    <b>
+    Pane della vita, sangue di salvezza,<br>
+    vero corpo, vera bevanda, cibo di grazia per il mondo.<br>
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "voci-alte",
+        contralti: "voci-basse",
+        tenori: "voci-alte",
+        bassi: "voci-basse"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

@@ -1,88 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+
+<body>
 
 <h2>
 189.	Pane del cielo<br>
 </h2>
-<ol>
 
-<b>
-Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br><br></b>
-<table>
-<td style="width: 300px"><span style="color:blue"><b>
-Pane del cielo <span style="color:rgb(243, 64, 249)">^</span> sei Tu Gesù,<br>via <span style="color:rgb(243, 64, 249)">^</span>d’amore: Tu ci fai come Te.<br></span>
-</b></td>
-<td style="width: 300px"><span style="color:rgb(243, 64, 249)"><b>
-Pane del cielo sei Tu Gesù,<br><span style="color:blue">^</span>d’amore: Tu ci fai come Te.<br></span></b>
-</td>
-</b>
-</table>
-<br>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li>
-No, non è rimasta fredda la terra: Tu sei rimasto con noi<br>
-per nutrirci di Te, Pane di vita<br>
-ed infiammare col tuo amore tutta l’umanità.<br>
-<br>
-</li>
-<table>
-<td style="width: 300px"><span style="color:blue"><b>
-Pane del cielo <span style="color:rgb(243, 64, 249)">^</span> sei Tu Gesù,<br>via <span style="color:rgb(243, 64, 249)">^</span>d’amore: Tu ci fai come Te.<br></span>
-</b></td>
-<td style="width: 300px"><span style="color:rgb(243, 64, 249)"><b>
-Pane del cielo sei Tu Gesù,<br><span style="color:blue">^</span>d’amore: Tu ci fai come Te.<br></span></b>
-</td>
-</b>
-</table>
-<br>
-<li>
-Sì, il cielo è qui su questa terra: Tu sei rimasto con noi,<br>
-ma ci porti con Te nella tua casa<br>
-dove vivremo insieme a Te tutta l’eternità.<br>
-<br>
-</li>
-<table>
-<td style="width: 300px"><span style="color:blue"><b>
-Pane del cielo <span style="color:rgb(243, 64, 249)">^</span> sei Tu Gesù,<br>via <span style="color:rgb(243, 64, 249)">^</span>d’amore: Tu ci fai come Te.<br></span>
-</b></td>
-<td style="width: 300px"><span style="color:rgb(243, 64, 249)"><b>
-Pane del cielo sei Tu Gesù,<br><span style="color:blue">^</span>d’amore: Tu ci fai come Te.<br></span></b>
-</td>
-</b>
-</table>
-<br>
-<li>
-No, la morte non può farci paura: Tu sei rimasto con noi<br>
-e chi vive di Te vive per sempre;<br>
-sei Dio con noi, sei Dio per noi, Dio in mezzo a noi.<br>
-<br>
-</li>
-<table>
-<td style="width: 300px"><span style="color:blue"><b>
-Pane del cielo <span style="color:rgb(243, 64, 249)">^</span> sei Tu Gesù,<br>via <span style="color:rgb(243, 64, 249)">^</span>d’amore: Tu ci fai come Te.<br></span>
-</b></td>
-<td style="width: 300px"><span style="color:rgb(243, 64, 249)"><b>
-Pane del cielo sei Tu Gesù,<br><span style="color:blue">^</span>d’amore: Tu ci fai come Te.<br></span></b>
-</td>
-</b>
-</table>
-<br>
-<table>
-<td style="width: 300px"><span style="color:blue"><b>
-Pane del cielo <span style="color:rgb(243, 64, 249)">^</span> sei Tu Gesù,<br>via <span style="color:rgb(243, 64, 249)">^</span>d’amore: Tu ci fai come Te.<br></span>
-</b></td>
-<td style="width: 300px"><span style="color:rgb(243, 64, 249)"><b>
-Pane del cielo sei Tu Gesù,<br><span style="color:blue">^</span>d’amore: Tu ci fai come Te.<br></span></b>
-</td>
-</b>
-</table>
+<div id="femmine" class="voce">
+
+    <ol>
+
+    <b>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    Pane del cielo sei Tu Gesù, d’amore: Tu ci fai come Te.<br>
+    </b>
+    <br>
+
+    <li>
+    No, non è rimasta fredda la terra: Tu sei rimasto con noi<br>
+    per nutrirci di Te, Pane di vita<br>
+    ed infiammare col tuo amore tutta l’umanità.<br>
+    <br>
+    </li>
+
+    <b>
+    Pane del cielo sei Tu Gesù, d’amore: Tu ci fai come Te.<br>
+    </b>
+
+    <br>
+    <li>
+    Sì, il cielo è qui su questa terra: Tu sei rimasto con noi,<br>
+    ma ci porti con Te nella tua casa<br>
+    dove vivremo insieme a Te tutta l’eternità.<br>
+    <br>
+    </li>
+
+    <b>
+    Pane del cielo sei Tu Gesù, d’amore: Tu ci fai come Te.<br>
+    </b>
+
+    <br>
+    <li>
+    No, la morte non può farci paura: Tu sei rimasto con noi<br>
+    e chi vive di Te vive per sempre;<br>
+    sei Dio con noi, sei Dio per noi, Dio in mezzo a noi.<br>
+    <br>
+    </li>
+    <b>
+    Pane del cielo sei Tu Gesù, d’amore: Tu ci fai come Te.<br>
+    Pane del cielo sei Tu Gesù, d’amore: Tu ci fai come Te.
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+
+
+<div id="maschi" class="voce">
+
+    <ol>
+
+    <b>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    </b>
+    <br>
+
+    <li>
+    No, non è rimasta fredda la terra: Tu sei rimasto con noi<br>
+    per nutrirci di Te, Pane di vita<br>
+    ed infiammare col tuo amore tutta l’umanità.<br>
+    <br>
+    </li>
+
+    <b>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    </b>
+
+    <br>
+    <li>
+    Sì, il cielo è qui su questa terra: Tu sei rimasto con noi,<br>
+    ma ci porti con Te nella tua casa<br>
+    dove vivremo insieme a Te tutta l’eternità.<br>
+    <br>
+    </li>
+
+    <b>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    </b>
+
+    <br>
+    <li>
+    No, la morte non può farci paura: Tu sei rimasto con noi<br>
+    e chi vive di Te vive per sempre;<br>
+    sei Dio con noi, sei Dio per noi, Dio in mezzo a noi.<br>
+    <br>
+    </li>
+    <b>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.<br>
+    Pane del cielo sei Tu Gesù, via d’amore: Tu ci fai come Te.
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

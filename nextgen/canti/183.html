@@ -1,118 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 300px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+<body>
 
 <h2>
 183.	Ora lasciateci cantare<br>
 </h2>
-<i>
-    <span style="color:rgb(250, 94, 255)">soprani</span><br>
-    <span style="color:red">soprani e contralti (due voci)</span><br>
-    <span style="color:rgb(147, 24, 255)">soprani e tenori</span><br>
-    <span style="color:#AA0000">contralti</span><br>
-    <span style="color:rgb(53, 0, 229)">contralti e bassi</span><br>
-    <span style="color:blue">bassi</span><br>
-    <span style="color:green">4 voci</span><br>
-</i><br>
 
-<ol><span style="color:#AA0000">
-O filii et filiae, Rex coelestis, Rex gloriae,<br>morte surrexit hodie. Alleluia.<br></span>
-<span style="color:green"><b><br>
-Cristo Signore risuscitò!</b><br></span>
-<br>
-<b>
-<span style="color:rgb(250, 94, 255)">
-Ora lasciateci cantare la tenerezza dell’amore.<br></span>
-<span style="color:red">
-Ora lasciateci cantare tutta la forza della vita.<br></span>
-<table>
-<td style="width: 230px"><span style="color:red">
-Ora lasciateci cantare<br>tutta la nostra gioia.<br></span>
-</td>    
-<td style="width: 230px"><span style="color:blue">
-Ora lasciateci cantare<br>tutta la forza della vita.<br></span>
-</td>    
-</table><span style="color:green">
-Ora lasciateci cantare: Cristo risuscitò!<br></span>
-<br>
-</b>
-<li>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<span style="color:rgb(250, 94, 255)">
-Padre dell’uomo io ti ringrazio,<br></span>
-<span style="color:red">
-Figlio e fratello ti benedico,<br></span>
-<table>
-<td style="width: 280px"><span style="color:rgb(147, 24, 255)">
-Spirito Santo, seme di vita,<br>
-oltre la morte so che Tu sei.<br></span>
-</td>
-<td style="width: 170px"><span style="color:rgb(53, 0, 229)">
-o, o, o...<br>
-o, o, o...<br></span>
-</td>
-</table>
-<br>
+<!-- SEZIONE SOPRANI -->
+<div id="soprani" class="voce">
 
-</li>
-<b>
-<span style="color:rgb(250, 94, 255)">
-Ora lasciateci cantare la tenerezza dell’amore.<br></span>
-<span style="color:red">
-Ora lasciateci cantare tutta la forza della vita.<br></span>
-<table>
-<td style="width: 230px"><span style="color:red">
-Ora lasciateci cantare<br>tutta la nostra gioia.<br></span>
-</td>    
-<td style="width: 230px"><span style="color:blue">
-Ora lasciateci cantare<br>tutta la forza della vita.<br></span>
-</td>    
-</table><span style="color:green">
-Ora lasciateci cantare: Cristo risuscitò!<br></span>
-<br>
-</b>
+    <ol><span class="verde">
+    O filii et filiae, Rex coelestis, Rex gloriae,<br>morte surrexit hodie. Alleluia.<br></span>
+    <b><br>
+    Cristo Signore risuscitò!</b><br>
+    <br>
+    <b>
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <li>
 
-<li>
-<span style="color:rgb(250, 94, 255)">
-E questo canto, come il tuo pane,<br></span>
-<span style="color:red">
-semplice e lieto ora ci unisce<br></span>
-<table>
-<td style="width: 280px"><span style="color:rgb(147, 24, 255)">
-nella memoria, nella speranza<br>
-d’essere insieme quando verrai.<br></span>
-</td>
-<td style="width: 170px"><span style="color:rgb(53, 0, 229)">
-o, o, o...<br>
-o, o, o...<br></span>
-</td>
-</table>
-<br>
-</li>
+    Padre dell’uomo io ti ringrazio,<br>
+    Figlio e fratello ti benedico,<br>
+    Spirito Santo, seme di vita,<br>
+    oltre la morte so che Tu sei.<br>
+    <br>
 
-<b>
-<span style="color:rgb(250, 94, 255)">
-Ora lasciateci cantare la tenerezza dell’amore.<br></span>
-<span style="color:red">
-Ora lasciateci cantare tutta la forza della vita.<br></span>
-<table>
-<td style="width: 230px"><span style="color:red">
-Ora lasciateci cantare<br>tutta la nostra gioia.<br></span>
-</td>    
-<td style="width: 230px"><span style="color:blue">
-Ora lasciateci cantare<br>tutta la forza della vita.<br></span>
-</td>    
-</table><span style="color:green">
-Ora lasciateci cantare: Cristo risuscitò!<br></span>
-<br>
-</b>
-<span style="color:green"><b>
-Cristo Signore risuscitò!</b><br></span>
+    </li>
+    <b>
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
 
-</ol>
+    <li>
+    E questo canto, come il tuo pane,<br>
+    semplice e lieto ora ci unisce<br>
+    nella memoria, nella speranza<br>
+    d’essere insieme quando verrai.<br>
+    <br>
+    </li>
+
+    <b>
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <b>
+    Cristo Signore risuscitò!</b><br>
+
+    </ol>
+</div>
+
+
+
+
+
+<div id="contralti" class="voce">
+
+
+    <ol>
+    O filii et filiae, Rex coelestis, Rex gloriae,<br>morte surrexit hodie. Alleluia.<br>
+    <b><br>
+    Cristo Signore risuscitò!</b><br>
+    <br>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <li>
+
+    <span class="verde">
+    Padre dell’uomo io ti ringrazio,<br></span>
+    Figlio e fratello ti benedico,<br>
+    o, o, o...<br>
+    o, o, o...<br>
+    <br>
+
+    </li>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+
+    <li>
+    <span class="verde">
+    E questo canto, come il tuo pane,<br></span>
+    semplice e lieto ora ci unisce<br>
+    o, o, o...<br>
+    o, o, o...<br>
+    <br>
+    </li>
+
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <b>
+    Cristo Signore risuscitò!</b><br>
+
+    </ol>
+</div>
+
+
+
+
+
+<div id="tenori" class="voce">
+
+
+    <ol><span class="verde">
+    O filii et filiae, Rex coelestis, Rex gloriae,<br>morte surrexit hodie. Alleluia.<br></span>
+    <b><br>
+    Cristo Signore risuscitò!</b><br>
+    <br>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br></span>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <li>
+
+    <span class="verde">
+    Padre dell’uomo io ti ringrazio,<br>
+    Figlio e fratello ti benedico,<br></span>
+    Spirito Santo, seme di vita,<br>
+    oltre la morte so che Tu sei.<br>
+    <br>
+
+    </li>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br></span>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+
+    <li>
+    <span class="verde">
+    E questo canto, come il tuo pane,<br>
+    semplice e lieto ora ci unisce<br></span>
+    nella memoria, nella speranza<br>
+    d’essere insieme quando verrai.<br>
+    <br>
+    </li>
+
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare tutta la nostra gioia.<br></span>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <b>
+    Cristo Signore risuscitò!</b><br>
+
+    </ol>
+</div>
+
+
+
+
+
+<div id="bassi" class="voce">
+
+
+    <ol><span class="verde">
+    O filii et filiae, Rex coelestis, Rex gloriae,<br>morte surrexit hodie. Alleluia.<br></span>
+    <b><br>
+    Cristo Signore risuscitò!</b><br>
+    <br>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <li>
+
+    <span class="verde">
+    Padre dell’uomo io ti ringrazio,<br>
+    Figlio e fratello ti benedico,<br></span>
+    o, o, o...<br>
+    o, o, o...<br>
+    <br>
+
+    </li>
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+
+    <li>
+    <span class="verde">
+    E questo canto, come il tuo pane,<br>
+    semplice e lieto ora ci unisce<br></span>
+    o, o, o...<br>
+    o, o, o...<br>
+    <br>
+    </li>
+
+    <b>
+    <span class="verde">
+    Ora lasciateci cantare la tenerezza dell’amore.<br>
+    Ora lasciateci cantare tutta la forza della vita.<br></span>
+    Ora lasciateci cantare tutta la forza della vita.<br>
+    Ora lasciateci cantare: Cristo risuscitò!<br>
+    <br>
+    </b>
+    <b>
+    Cristo Signore risuscitò!</b><br>
+
+    </ol>
+</div>
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Nascondi tutte le sezioni
+    document.getElementById('soprani').style.display = 'none';
+    document.getElementById('contralti').style.display = 'none';
+    document.getElementById('tenori').style.display = 'none';
+    document.getElementById('bassi').style.display = 'none';
+
+    // Mostra quella selezionata
+    document.getElementById(voce).style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Aggiungi classe al bottone attivo
+    const btnAttivo = document.querySelector(`.voceBox a[onclick="selezionaVoce('${voce}')"]`);
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+
+</body>
+</html>
+

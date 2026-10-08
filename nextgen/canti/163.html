@@ -1,25 +1,66 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body { font-family: Arial, Helvetica, sans-serif; padding:20px }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
 
-/* --- Selettore voci --- */
-#voce-selector button {
-  margin-right: 10px;
-  padding: 6px 12px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background: #f5f5f5;
-  border-radius: 4px;
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
 }
-#voce-selector button.attivo {
-  background: #ddd;
-  font-weight: bold;
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 
 /* --- Misteri --- */
 .mistero { margin-top: 20px; }
@@ -41,22 +82,6 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
   margin-top: 10px;
 }
 
-/* --- Testi voci --- */
-.voce-testo { display:none; }
-
-/* FEMMINILI: tutto nero */
-.voce-testo.femminili { color:black; }
-
-/* MASCHILI: CA → canto nero, ascolto verde */
-.maschi-verde { color:#2a8c2a; }   /* ascolto */
-.maschi-nero  { color:black; }     /* canto */
-
-/* Ritornelli */
-.boldnero {
-  font-weight: bold;
-  color: black;
-  margin-top: 10px;
-}
 </style>
 </head>
 
@@ -64,14 +89,14 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
 
 <h2>163. Mi hai tenuto per mano</h2>
 
-<!-- ===========================
-     SELETTORE VOCI
-=========================== -->
-<div id="voce-selector">
-  <button data-voce="femminili">Voci femminili</button>
-  <button data-voce="tenori">Tenori</button>
-  <button data-voce="bassi">Bassi</button>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
 </div>
+
 
 <!-- ============================================================
      MISTERO 1 — ESISTENZA
@@ -79,9 +104,8 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
 <div class="mistero">
   <div class="mistero-header">1. Mistero dell’esistenza</div>
   <div class="mistero-contenuto">
+    <div class="femmine">
 
-    <!-- FEMMINILI -->
-    <div class="voce-testo femminili" data-voce="femminili">
       Gli occhi videro il mondo durante giorni che non ricordo,<br>
       il tempo seguì i miei passi per un mistero che non conosco,<br>
       un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
@@ -95,20 +119,19 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
       Io non ho più paura, vedo un torrente di volti<br>
       che scorre tra gli argini di una stessa avventura;<br>
       chi è vicino alla fonte, chi già lascia la valle,<br>
-      chi ha percorso da tempo la grande pianura.<br>
+      chi ha percorso da tempo la grande pianura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti al mio nome Ti sei fermato<br>
         e dal primo respiro mi hai tenuto per mano,<br>
         mi hai tenuto per mano,<br>
         mi hai tenuto per mano.<br>
-      </div>
+      </b>
     </div>
 
-    <!-- TENORI (AZZURRO) -->
-    <div class="voce-testo tenori" data-voce="tenori">
+    <div class="tenori">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Gli occhi videro il mondo durante giorni che non ricordo,<br>
         il tempo seguì i miei passi per un mistero che non conosco,<br>
         un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
@@ -118,27 +141,24 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         La strada a chi non ha ali, il primo passo fu sfida e rabbia;<br>
         parole a nutrir la voce e luci senza veder la strada:<br>
         sul ciglio stavo seduto e fui bambino tra stelle e sabbia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo un torrente di volti<br>
         che scorre tra gli argini di una stessa avventura;<br>
         chi è vicino alla fonte, chi già lascia la valle,<br>
-        chi ha percorso da tempo la grande pianura.<br>
-      </div>
+        chi ha percorso da tempo la grande pianura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti al mio nome Tu sei<br>
         dal primo respiro Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         per mano.<br>
-      </div>
+      </b>
     </div>
 
-    <!-- BASSI (BLU) -->
-    <div class="voce-testo bassi" data-voce="bassi">
+    <div class="bassi">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Gli occhi videro il mondo durante giorni che non ricordo,<br>
         il tempo seguì i miei passi per un mistero che non conosco,<br>
         un uomo tese le mani, raccolse il bimbo che aveva in dono<br>
@@ -148,22 +168,19 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         La strada a chi non ha ali, il primo passo fu sfida e rabbia;<br>
         parole a nutrir la voce e luci senza veder la strada:<br>
         sul ciglio stavo seduto e fui bambino tra stelle e sabbia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo un torrente di volti<br>
         che scorre tra gli argini di una stessa avventura;<br>
         chi è vicino alla fonte, chi già lascia la valle,<br>
-        chi ha percorso da tempo la grande pianura.<br>
-      </div>
+        chi ha percorso da tempo la grande pianura.<br><br>
 
-      <div class="boldnero">
-        Davanti a me<br>
-        fermato<br>
+      <b>
+        Davanti a me fermato<br>
         dal primo respiro Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         mano.<br>
-      </div>
+      </b>
     </div>
 
   </div>
@@ -177,7 +194,7 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
   <div class="mistero-contenuto">
 
     <!-- FEMMINILI -->
-    <div class="voce-testo femminili" data-voce="femminili">
+    <div class="femmine">
       Fu quando mi seppi dono che dire grazie fu dire molto,<br>
       a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
       Temetti la verità quando il coraggio si fece orgoglio,<br>
@@ -191,20 +208,20 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
       Io non ho più paura, vedo la luce<br>
       e ritorna la pace, la strada si è fatta sicura;<br>
       ora vedo la fonte e la grande pianura:<br>
-      la potenza creatrice si è fatta creatura.<br>
+      la potenza creatrice si è fatta creatura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti al mio volto Ti sei chinato<br>
         e fratello nel viaggio mi hai tenuto per mano,<br>
         mi hai tenuto per mano,<br>
         mi hai tenuto per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- TENORI (AZZURRO) -->
-    <div class="voce-testo tenori" data-voce="tenori">
+    <div class="tenori">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Fu quando mi seppi dono che dire grazie fu dire molto,<br>
         a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
         Temetti la verità quando il coraggio si fece orgoglio,<br>
@@ -214,28 +231,25 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         L’amore di chi ha creato si è fatto impronta di ogni speranza.<br>
         La carne si è fatta segno, custode e tempio di tenerezza.<br>
         Il Padre si è fatto Figlio e fu bambino tra stelle e sabbia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo la luce<br>
         e ritorna la pace, la strada si è fatta sicura;<br>
         ora vedo la fonte e la grande pianura:<br>
-        la potenza creatrice si è fatta creatura.<br>
-      </div>
+        la potenza creatrice si è fatta creatura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti al mio volto Tu sei<br>
-        fratello nel viaggio<br>
-        Tu mi hai tenuto per mano,<br>
+        fratello nel viaggio Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- BASSI (BLU) -->
-    <div class="voce-testo bassi" data-voce="bassi">
+    <div class="bassi">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Fu quando mi seppi dono che dire grazie fu dire molto,<br>
         a tanti chiesi una meta: ebbi il consiglio di stare pronto.<br>
         Temetti la verità quando il coraggio si fece orgoglio,<br>
@@ -245,23 +259,19 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         L’amore di chi ha creato si è fatto impronta di ogni speranza.<br>
         La carne si è fatta segno, custode e tempio di tenerezza.<br>
         Il Padre si è fatto Figlio e fu bambino tra stelle e sabbia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo la luce<br>
         e ritorna la pace, la strada si è fatta sicura;<br>
         ora vedo la fonte e la grande pianura:<br>
-        la potenza creatrice si è fatta creatura.<br>
-      </div>
+        la potenza creatrice si è fatta creatura.<br><br>
 
-      <div class="boldnero">
-        Davanti a me<br>
-        chinato<br>
-        fratello nel viaggio<br>
-        Tu mi hai tenuto per mano,<br>
+      <b>
+        Davanti a me chinato<br>
+        fratello nel viaggio Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         mano.<br>
-      </div>
+      </b>
     </div>
 
   </div>
@@ -275,7 +285,7 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
   <div class="mistero-contenuto">
 
     <!-- FEMMINILI -->
-    <div class="voce-testo femminili" data-voce="femminili">
+    <div class="femmine">
       Ho visto semi d’amore unire mani, destini e corpi,<br>
       portare consolazione a chi conobbe dolore e morte;<br>
       ho visto colmare abissi con un abbraccio riconciliante,<br>
@@ -289,20 +299,20 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
       Io non ho più paura, vedo l’amore<br>
       che scende la valle e consola la grande pianura;<br>
       è sospinto alla foce sopra un legno crudele,<br>
-      condivide la sorte di ogni creatura.<br>
+      condivide la sorte di ogni creatura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti a una croce Ti sei piegato<br>
         le mani nel legno mi han tenuto per mano,<br>
         mi han tenuto per mano,<br>
         mi han tenuto per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- TENORI (AZZURRO) -->
-    <div class="voce-testo tenori" data-voce="tenori">
+    <div class="tenori">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Ho visto semi d’amore unire mani, destini e corpi,<br>
         portare consolazione a chi conobbe dolore e morte;<br>
         ho visto colmare abissi con un abbraccio riconciliante,<br>
@@ -312,28 +322,25 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         Il cielo si è fatto tenda della promessa e della memoria.<br>
         La voce si è fatta grido, le mani preda della follia.<br>
         Il corpo si è fatto pane per tutti gli uomini senza storia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo l’amore<br>
         che scende la valle e consola la grande pianura;<br>
         è sospinto alla foce sopra un legno crudele,<br>
-        condivide la sorte di ogni creatura.<br>
-      </div>
+        condivide la sorte di ogni creatura.<br><br>
 
-      <div class="boldnero">
+      <b>
         Davanti al mio nome sei Tu<br>
-        le tue mani nel legno<br>
-        mi han tenuto per mano,<br>
+        le tue mani nel legno mi han tenuto per mano,<br>
         Tu mi han tenuto per mano,<br>
         per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- BASSI (BLU) -->
-    <div class="voce-testo bassi" data-voce="bassi">
+    <div class="bassi">
 
-      <div class="maschi-verde">
+      <span class="verde">
         Ho visto semi d’amore unire mani, destini e corpi,<br>
         portare consolazione a chi conobbe dolore e morte;<br>
         ho visto colmare abissi con un abbraccio riconciliante,<br>
@@ -343,23 +350,19 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         Il cielo si è fatto tenda della promessa e della memoria.<br>
         La voce si è fatta grido, le mani preda della follia.<br>
         Il corpo si è fatto pane per tutti gli uomini senza storia.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo l’amore<br>
         che scende la valle e consola la grande pianura;<br>
         è sospinto alla foce sopra un legno crudele,<br>
-        condivide la sorte di ogni creatura.<br>
-      </div>
+        condivide la sorte di ogni creatura.<br><br>
 
-      <div class="boldnero">
-        Davanti a me<br>
-        piegato<br>
-        le mani nel legno<br>
-        Tu mi han tenuto per mano,<br>
+      <b>
+        Davanti a me piegato<br>
+        le mani nel legno Tu mi han tenuto per mano,<br>
         Tu mi han tenuto per mano,<br>
         mano.<br>
-      </div>
+      </b>
     </div>
 
   </div>
@@ -373,7 +376,7 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
   <div class="mistero-contenuto">
 
     <!-- FEMMINILI -->
-    <div class="voce-testo femminili" data-voce="femminili">
+    <div class="femmine">
       La storia si fece luce durante un’ora di poesia,<br>
       l’amore divenne forza che, dolce, vince ogni resistenza;<br>
       la terra si fece altare di imprevedibile liturgia,<br>
@@ -387,20 +390,20 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
       Io non ho più paura, vedo una grande distesa di pace<br>
       accogliere l’acqua più pura:<br>
       chi è vicino alla fonte, chi già lascia la valle,<br>
-      chi è già parte di Dio nella grande distesa.<br>
+      chi è già parte di Dio nella grande distesa.<br><br>
 
-      <div class="boldnero" style="margin-top:10px">
+      <b>
         Davanti al mio nome Ti sei fermato<br>
         e dal primo respiro mi hai tenuto per mano,<br>
         mi hai tenuto per mano,<br>
         mi hai tenuto per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- TENORI (AZZURRO) -->
-    <div class="voce-testo tenori" data-voce="tenori">
+    <div class="tenori">
 
-      <div class="maschi-verde">
+      <span class="verde">
         La storia si fece luce durante un’ora di poesia,<br>
         l’amore divenne forza che, dolce, vince ogni resistenza;<br>
         la terra si fece altare di imprevedibile liturgia,<br>
@@ -410,28 +413,25 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         fu allora che amai la terra, forma possibile dell’assoluto;<br>
         feconda di una speranza che lega volti, cuori e destini,<br>
         accolgo la Verità fino a che tutto non sia compiuto.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo una grande distesa di pace<br>
         accogliere l’acqua più pura:<br>
         chi è vicino alla fonte, chi già lascia la valle,<br>
-        chi è già parte di Dio nella grande distesa.<br>
-      </div>
+        chi è già parte di Dio nella grande distesa.<br><br>
 
-      <div class="boldnero" style="margin-top:10px">
+      <b>
         Davanti al mio nome Tu sei<br>
-        dal primo respiro<br>
-        Tu mi hai tenuto per mano,<br>
+        dal primo respiro Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         per mano.<br>
-      </div>
+      </b>
     </div>
 
     <!-- BASSI (BLU) -->
-    <div class="voce-testo bassi" data-voce="bassi">
+    <div class="bassi">
 
-      <div class="maschi-verde">
+      <span class="verde">
         La storia si fece luce durante un’ora di poesia,<br>
         l’amore divenne forza che, dolce, vince ogni resistenza;<br>
         la terra si fece altare di imprevedibile liturgia,<br>
@@ -441,58 +441,131 @@ body { font-family: Arial, Helvetica, sans-serif; padding:20px }
         fu allora che amai la terra, forma possibile dell’assoluto;<br>
         feconda di una speranza che lega volti, cuori e destini,<br>
         accolgo la Verità fino a che tutto non sia compiuto.<br><br>
-      </div>
+      </span>
 
-      <div class="maschi-nero">
         Io non ho più paura, vedo una grande distesa di pace<br>
         accogliere l’acqua più pura:<br>
         chi è vicino alla fonte, chi già lascia la valle,<br>
-        chi è già parte di Dio nella grande distesa.<br>
-      </div>
+        chi è già parte di Dio nella grande distesa.<br><br>
 
-      <div class="boldnero" style="margin-top:10px">
-        Davanti a me<br>
-        fermato<br>
-        dal primo respiro<br>
-        Tu mi hai tenuto per mano,<br>
+      <b>
+        Davanti a me fermato<br>
+        dal primo respiro Tu mi hai tenuto per mano,<br>
         Tu mi hai tenuto per mano,<br>
         mano.<br>
-      </div>
+      </b>
     </div>
 
   </div>
 </div>
 
-<script>
-/* ===========================
-   LOGICA VOCI (Regola CA)
-=========================== */
-const voceButtons = document.querySelectorAll('#voce-selector button');
-const testiVoci = document.querySelectorAll('.voce-testo');
 
-function selezionaVoce(voce) {
-  voceButtons.forEach(b => b.classList.toggle('attivo', b.dataset.voce === voce));
-  testiVoci.forEach(t => t.style.display = (t.dataset.voce === voce) ? 'block' : 'none');
+
+<script>
+/* ==========================================
+   MAPPATURA DELLE VOCI
+========================================== */
+const alias = {
+  soprani: "femmine",
+  contralti: "femmine",
+  tenori: "tenori",
+  bassi: "bassi"
+};
+
+let voceCorrente = null;
+
+/* ==========================================
+   LETTURA PARAMETRO URL
+========================================== */
+const params = new URLSearchParams(window.location.search);
+const voceParam = params.get("voce");
+
+// Se il parametro è valido, usalo
+if (voceParam && ["soprani","contralti","tenori","bassi"].includes(voceParam)) {
+    voceCorrente = alias[voceParam];
+    localStorage.setItem("vocePreferita", voceParam);
 }
 
-selezionaVoce('femminili');
+/* ==========================================
+   SELEZIONE VOCE (bottoni)
+========================================== */
+function selezionaVoce(voce) {
+  voceCorrente = alias[voce] || voce;
+  localStorage.setItem("vocePreferita", voce);
 
-voceButtons.forEach(btn => {
-  btn.addEventListener('click', () => selezionaVoce(btn.dataset.voce));
-});
+  // evidenzia bottoni
+  document.querySelectorAll(".voceBox a").forEach(btn => {
+    btn.classList.remove("attivo");
+  });
+  document.querySelector(`.voceBox a[data-voce="${voce}"]`)
+    ?.classList.add("attivo");
 
-/* ===========================
-   LOGICA MISTERI (accordion)
-=========================== */
-document.querySelectorAll('.mistero-header').forEach(header => {
-  header.addEventListener('click', () => {
+  aggiornaVoceNeiMisteriAperti();
+}
+
+/* ==========================================
+   MOSTRA LA VOCE IN TUTTI I MISTERI APERTI
+========================================== */
+function aggiornaVoceNeiMisteriAperti() {
+
+  // Se non hai ancora scelto una voce → default = femmine
+  if (!voceCorrente) voceCorrente = "femmine";
+
+  // Prendi TUTTI i misteri aperti
+  const misteriAperti = document.querySelectorAll(".mistero.aperto");
+
+  misteriAperti.forEach(mistero => {
+
+    // Nascondi tutte le voci del mistero
+    mistero.querySelectorAll(".femmine, .tenori, .bassi")
+      .forEach(v => v.style.display = "none");
+
+    // Mostra la voce selezionata
+    const target = mistero.querySelector("." + voceCorrente);
+    if (target) target.style.display = "block";
+  });
+}
+
+/* ==========================================
+   LOGICA ACCORDION — MULTI APERTURA
+========================================== */
+document.querySelectorAll(".mistero-header").forEach(header => {
+  header.addEventListener("click", () => {
     const mistero = header.parentElement;
-    const contenuto = mistero.querySelector('.mistero-contenuto');
-    const aperto = mistero.classList.toggle('aperto');
-    contenuto.style.display = aperto ? 'block' : 'none';
+
+    // apri/chiudi SOLO questo mistero
+    const aperto = mistero.classList.toggle("aperto");
+    mistero.querySelector(".mistero-contenuto").style.display =
+      aperto ? "block" : "none";
+
+    // aggiorna la voce mostrata
+    if (aperto) aggiornaVoceNeiMisteriAperti();
   });
 });
+
+/* ==========================================
+   CARICAMENTO INIZIALE
+========================================== */
+window.onload = function() {
+  const voceSalvata = localStorage.getItem("vocePreferita");
+
+  // Se il parametro ha impostato voceCorrente → usa quello
+  if (voceCorrente && voceParam) {
+      selezionaVoce(voceParam);
+  }
+  // Altrimenti usa la voce salvata
+  else if (voceSalvata) {
+      selezionaVoce(voceSalvata);
+  }
+  // Se non c’è nulla → default soprani
+  else {
+      selezionaVoce("soprani");
+  }
+};
 </script>
+
+
+
 
 </body>
 </html>

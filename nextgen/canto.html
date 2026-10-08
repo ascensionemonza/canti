@@ -44,11 +44,10 @@
 
 <div id="contenuto"></div>
 
-
-
 <script>
 const params = new URLSearchParams(window.location.search);
 let n = params.get("n");
+window.isSpecial163 = false; // flag globale
 
 if (n) {
 
@@ -66,22 +65,40 @@ if (n) {
 
     file = "canti/" + file + ".html";
 
+    // imposta flag speciale solo per 163
+    if (file.includes("163")) {
+        window.isSpecial163 = true;
+    }
+    window.isA09 = file.endsWith("A09.html");
+
     fetch(file)
       .then(r => r.text())
       .then(html => {
         const container = document.getElementById("contenuto");
-        container.innerHTML = html;
+        container.innerHTML = ""; // svuota prima
+        container.insertAdjacentHTML("beforeend", html);
 
-        // Esegui gli script del canto
+        // Esegui gli script del canto (comportamento originale)
         container.querySelectorAll("script").forEach(oldScript => {
           const newScript = document.createElement("script");
           newScript.textContent = oldScript.textContent;
-          document.body.appendChild(newScript);
+          // ⭐ eseguiamo gli script nel container, non nel body
+          container.appendChild(newScript);
         });
 
-        // --- Rileva automaticamente le voci presenti ---
-        const vociPresenti = [...container.querySelectorAll('.voce')].map(v => v.id);
+        // --- Rileva automaticamente le voci presenti (speciale per 163) ---
+        let vociPresenti;
 
+        if (window.isSpecial163) {
+            // LOGICA SPECIALE PER IL CANTO 163: femmine / tenori / bassi
+            vociPresenti = [...container.querySelectorAll('.femmine, .tenori, .bassi')]
+                .map(v => v.classList[0]);   // femmine / tenori / bassi
+        } else {
+            // LOGICA ORIGINALE PER TUTTI GLI ALTRI CANTI
+            vociPresenti = [...container.querySelectorAll('.voce')]
+                .map(v => v.id);
+        }
+        
         // --- Rileva automaticamente i bottoni ---
         const bottoni = [...container.querySelectorAll('.voceBox a')];
 
@@ -97,22 +114,76 @@ if (n) {
             }
         });
 
-// --- Caricamento voce salvata ---
-const voceSB = localStorage.getItem('vocePreferita');
-const voceFM = localStorage.getItem('vocePreferitaFM');
+        /*
+        // --- Caricamento voce salvata ---
+        const voceSB = localStorage.getItem('vocePreferita');
+        const voceFM = localStorage.getItem('vocePreferitaFM');
 
-setTimeout(() => {
-    let voceDaCaricare = null;
+        setTimeout(() => {
+            let voceDaCaricare = null;
 
-    // 👉 Passiamo SEMPRE la voce originale salvata
-    if (voceSB) {
-        voceDaCaricare = voceSB;
-    } else if (voceFM) {
-        voceDaCaricare = voceFM;
-    }
+            if (voceSB) {
+                voceDaCaricare = voceSB;
+            } else if (voceFM) {
+                voceDaCaricare = voceFM;
+            } else {
+                // fallback: prima voce rilevata
+                voceDaCaricare = vociPresenti[0];
+            }
 
-    if (voceDaCaricare) mostraVoce(voceDaCaricare);
-}, 0);
+            if (voceDaCaricare) mostraVoce(voceDaCaricare);
+        }, 0); */
+        // --- Caricamento voce salvata (+A09) ---
+        const voceSB = localStorage.getItem('vocePreferita');
+        const voceSBspeciale = localStorage.getItem('vocePreferitaA09');
+        const voceFM = localStorage.getItem('vocePreferitaFM');
+
+        setTimeout(() => {
+
+            let voceDaCaricare = null;
+
+            // priorità alla voce speciale SOLO nel canto A09
+            if (window.isA09 && voceSBspeciale) {
+
+                voceDaCaricare = voceSBspeciale;
+
+            } else if (voceSB) {
+
+                voceDaCaricare = voceSB;
+
+            } else if (voceFM) {
+
+                voceDaCaricare = voceFM;
+
+            } else {
+
+                // fallback: prima voce rilevata
+                voceDaCaricare = vociPresenti[0];
+            }
+
+            if (voceDaCaricare) {
+                mostraVoce(voceDaCaricare);
+            }
+
+        }, 0);
+
+
+        // ⭐ ATTIVA GLI ACCORDION SOLO SE SIAMO NEL 163
+        if (window.isSpecial163) {
+            requestAnimationFrame(() => {
+                container.querySelectorAll(".mistero-header").forEach(header => {
+                    header.addEventListener("click", () => {
+                        const mistero = header.parentElement;
+                        const aperto = mistero.classList.toggle("aperto");
+                        mistero.querySelector(".mistero-contenuto").style.display =
+                            aperto ? "block" : "none";
+
+                        // aggiorna la voce mostrata nei misteri aperti
+                        aggiornaVoceNeiMisteriAperti();
+                    });
+                });
+            });
+        }
 
       });
 
@@ -127,32 +198,64 @@ setTimeout(() => {
 
 function mostraVoce(voce) {
 
+    const container = document.getElementById("contenuto");
+
     // Alias automatico
     const voceReale = window.aliasAutomatici[voce] || voce;
+    window.voceCorrente = voceReale;
 
-    // Nascondi tutte le sezioni presenti nel canto
-    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+    if (window.isSpecial163) {
+        // --- LOGICA SPECIALE SOLO PER 163: femmine / tenori / bassi ---
+        container.querySelectorAll('.femmine, .tenori, .bassi')
+            .forEach(v => v.style.display = 'none');
 
-    // Mostra la voce reale
-    const target = document.getElementById(voceReale);
-    if (target) target.style.display = 'block';
+        // mostra la voce corrente in tutti i misteri aperti
+        aggiornaVoceNeiMisteriAperti();
 
-    // Evidenziazione bottoni
+    } else {
+        // --- LOGICA ORIGINALE: .voce + id ---
+        document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+        const target = document.getElementById(voceReale);
+        if (target) target.style.display = 'block';
+    }
+
+    // Evidenziazione bottoni (comportamento originale)
     document.querySelectorAll(".voceBox a").forEach(btn => {
         btn.classList.remove("attivo");
     });
 
-    // Evidenzia il pulsante cliccato
     const btnAttivo = document.querySelector(`.voceBox a[data-voce="${voce}"]`);
     if (btnAttivo) btnAttivo.classList.add("attivo");
 }
 
 
+/* ---------------------------
+   AGGIORNA VOCI NEI MISTERI APERTI (solo 163)
+   --------------------------- */
+
+function aggiornaVoceNeiMisteriAperti() {
+    if (!window.isSpecial163) return;
+
+    const container = document.getElementById("contenuto");
+    const voceCorrente = window.voceCorrente || "femmine";
+
+    const misteriAperti = container.querySelectorAll(".mistero.aperto");
+
+    misteriAperti.forEach(mistero => {
+        mistero.querySelectorAll(".femmine, .tenori, .bassi")
+            .forEach(v => v.style.display = "none");
+
+        const target = mistero.querySelector("." + voceCorrente);
+        if (target) target.style.display = "block";
+    });
+}
+
 
 /* ---------------------------
    SELEZIONE + MEMORIZZAZIONE
    --------------------------- */
-
+/*
 function selezionaVoce(voce) {
 
     // Salva voce SB
@@ -167,11 +270,38 @@ function selezionaVoce(voce) {
 
     mostraVoce(voce);
 }
+*/
+function selezionaVoce(voce) {
+
+    // Caso speciale A09
+    if (voce === 'specialeA09') {
+
+        localStorage.setItem('vocePreferitaA09', voce);
+
+    }
+
+    else if (['soprani', 'contralti', 'tenori', 'bassi'].includes(voce)) {
+
+        localStorage.setItem('vocePreferita', voce);
+
+        // annulla la scelta speciale SOLO se siamo nel canto A09
+        if (window.isA09) {
+            localStorage.removeItem('vocePreferitaA09');
+        }
+    }
+
+    // Sistema femmine/maschi (canto 163)
+    else if (['femmine', 'maschi'].includes(voce)) {
+
+        localStorage.setItem('vocePreferitaFM', voce);
+
+    }
+
+    mostraVoce(voce);
+}
+
+
 </script>
-
-
-
-
 
 <br><br>
 
