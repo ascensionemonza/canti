@@ -1,5 +1,5 @@
 4 ottobre 2026 ore 10
-0;146;0;0;136TER;111;0;15;0;0;0;0;220;223BIS;80BIS;0;8TER;A11;0;0;0;0;233;0;0
+0;146;A9;163;136TER;111;0;15;0;0;0;0;220;223BIS;80BIS;0;8TER;A11;0;0;0;0;233;0;0
 R. La vigna del Signore<br>è la casa d’Israele.
 
 Hai sradicato una vite dall’Egitto,
