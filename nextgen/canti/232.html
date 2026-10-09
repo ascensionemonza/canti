@@ -1,69 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
-232.	Servire è regnare <span style="color:green">- RE-</span><br>
+232.	Servire è regnare<br>
 </h2>
-<ol>
 
-<li>
-Guardiamo a Te che sei - Maestro e Signore:<br>
-chinato a terra stai, - ci mostri che l’amore<br>
-è cingersi il grembiu-ule, sapersi inginocchiare,<br>
-c’insegni che amare - - è servire. -<br>
-<br>
-</li>
-<b>
-Fa’ che impariamo, Signore, da Te - -<br>
-[che il più grande è] chi più sa servire,<br>
-chi s’abbassa e chi si sa - piegare,<br>
-perché grande - è soltanto - l’amo-re.<br>
-<br>
-</b>
-<table>
-    <td style="width:350px;"><li><span style="color:rgb(243, 64, 249)">
-        E ti vediamo <span style="color:blue">^</span> poi,
-        Maestro e <span style="color:green">Signore</span>,<br>
-        che lavi i piedi <span style="color:blue">^</span> a noi<br>
-        che siamo tue <span style="color:green">creature</span>;<br>
-        e cinto del grem<span style="color:blue">^</span>biule,<br>
-        che è il manto tuo regale,<br></span><span style="color:green">
-        c’insegni che servire -
-        è regnare.<br>
-        <br>
-        <b>
-            Fa’ che impariamo, Signore, da Te<br></span></span>
-            che il più grande è chi più sa servire,<br><span style="color:rgb(243, 64, 249)">
-            chi s’abbassa e chi <span style="color:blue">^</span> si sa piegare,<br>
-            perché grande è</span><span style="color:green"> soltanto - l’amo-re.<br>
-        </span>
-        </b>
-    </td>
-    <td style="width:350px;"><span style="color:blue">
-        Ti vediamo poi, -
-        <span style="color:green">Signòré</span>,<br>
-        lavi i piedi a noi<br>
-        ... <span style="color:green">creatùré</span>;<br>
-        cinto del grembiu-ule,<br>
-        ...<br></span><span style="color:green">
-        c’insegni che servire -
-        è regnare.<br>
-        <br>
-        <b>
-            Fa’ che impariamo, Signore, da Te<br></span></span>
-            che il più grande è chi più sa servire,<br><span style="color:blue">
-            s’abbassa e chi si sa piegare,<br></span><span style="color:green">
-            soltanto - l’amo-re.<br>
-        </b>
-    </td>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+    <ol>
+
+    <li>
+    Guardiamo a Te che sei Maestro e Signore:<br>
+    chinato a terra stai, ci mostri che l’amore<br>
+    è cingersi il grembiule, sapersi inginocchiare,<br>
+    c’insegni che amare è servire.<br>
+    <br>
     </li>
-</table>
+    <b>
+    Fa’ che impariamo, Signore, da Te<br>
+    che il più grande è chi più sa servire,<br>
+    chi s’abbassa e chi si sa piegare,<br>
+    perché grande è soltanto l’amore.<br>
+    <br>
+    </b>
+    <li>
+    E ti vediamo poi, Maestro e Signore,<br>
+    che lavi i piedi a noi che siamo tue creature;<br>
+    e cinto del grembiule, che è il manto tuo regale,<br>
+    c’insegni che servire è regnare.<br>
+    <br>
+    </li>
+    <b>
+    Fa’ che impariamo, Signore, da Te<br>
+    che il più grande è chi più sa servire,<br>
+    chi s’abbassa e chi si sa piegare,<br>
+    perché grande è soltanto l’amore.
+    </b>
 
-</ol>
+
+    </ol>
+
+
+</div>
+
+
+<div id="maschi" class="voce">
+    <ol>
+
+    <li>
+    Guardiamo a Te che sei Maestro e Signore:<br>
+    chinato a terra stai, ci mostri che l’amore<br>
+    è cingersi il grembiule, sapersi inginocchiare,<br>
+    c’insegni che amare è servire.<br>
+    <br>
+    </li>
+    <b>
+    Fa’ che impariamo, Signore, da Te<br>
+    che il più grande è chi più sa servire,<br>
+    chi s’abbassa e chi si sa piegare,<br>
+    perché grande è soltanto l’amore.<br>
+    <br>
+    </b>
+    <li>
+    Ti vediamo poi, Signore,<br>
+    lavi i piedi a noi creature;<br>
+    cinto del grembiule,<br>
+    c’insegni che servire è regnare.<br>
+    <br>
+    </li>
+    <b>
+    Fa’ che impariamo, Signore, da Te<br>
+    che il più grande è chi più sa servire,<br>
+    s’abbassa e chi si sa piegare,<br>
+    soltanto l’amore.
+    </b>
+
+
+    </ol>
+
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

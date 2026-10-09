@@ -1,108 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
 273.	Verremo a Te<br>
 
 </h2>
-<i>
-    <span style="color:rgb(243, 64, 249)">soprani voce principale, contralti seconda voce</span>
-</i><br><br>
-<ol>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li>
-Incontro a Te, incontro alla Parola,<br>
-veniamo qui e grande è la tua casa:<br>
-Tu mi hai chiamato qui, Tu mi aspettavi qui da sempre<br>
-e sono qui e siamo qui, attratti da un amore<br>
-fedele come solo Tu, Signore Dio.<br>
-<br>
-</li>
+<div id="femmine" class="voce">
+    <ol>
 
-<table>
-    <td style="width: 350px;"><span style="color:rgb(243, 64, 249)"><b>
-        Verremo a <span style="color:blue">^</span>Te, sorgente della vita,<br>
+    <li>
+    Incontro a Te, incontro alla Parola,<br>
+    veniamo qui e grande è la tua casa:<br>
+    Tu mi hai chiamato qui, Tu mi aspettavi qui da sempre<br>
+    e sono qui e siamo qui, attratti da un amore<br>
+    fedele come solo Tu, Signore Dio.<br>
+    <br>
+    </li>
+
+    <b>
+        Verremo a Te, sorgente della vita,<br>
         d’ogni uomo, d’ogni giorno,<br>
         ogni cosa Padre l’hai voluta Tu.<br>
-        Verremo a <span style="color:blue">^</span>Te, Signore della gioia,<br>
+        Verremo a Te, Signore della gioia,<br>
         dell’amore che si dona,<br>
-        di ogni cuore che l’amore attirerà.</span> </b><i>[su]</i><br><b>
-    </td>    
-    <td style="width: 250px;"><span style="color:blue"><b>
+        di ogni cuore che l’amore attirerà.<br><br>
+    </b>
+
+    <li>
+    Incontro a Te, un Dio che si fa dono;<br>
+    incontro a Te e già sei più vicino<br>
+    e luce sei per noi nei giorni della nostra vita;<br>
+    Tu cerchi noi, Tu proprio noi per ricondurre a Te<br>
+    tutto l’amore pronunciato, verbo di Dio.<br>
+    <br>
+    </li>
+
+    <b>
+        Verremo a Te, sorgente della vita,<br>
+        d’ogni uomo, d’ogni giorno,<br>
+        ogni cosa Padre l’hai voluta Tu.<br>
+        Verremo a Te, Signore della gioia,<br>
+        dell’amore che si dona,<br>
+        di ogni cuore che l’amore attirerà.<br><br>
+    </b>
+
+    <li>
+    Crediamo in Te, crediamo alla Parola,<br>
+    al figlio tuo Gesù nostro Signore,<br>
+    uomo tra gli uomini, Dio salvatore della vita,<br>
+    morto per noi, per noi risorto, per ricondurre a Te<br>
+    tutto l’amore pronunciato, verbo di Dio.<br>
+    <br>
+    </li>
+
+    <b>
+        Verremo a Te, sorgente della vita,<br>
+        d’ogni uomo, d’ogni giorno,<br>
+        ogni cosa Padre l’hai voluta Tu.<br>
+        Verremo a Te, Signore della gioia,<br>
+        dell’amore che si dona,<br>
+        di ogni cuore che l’amore attirerà.
+    </b>
+
+    </ol>
+
+</div>
+
+
+
+<div id="maschi" class="voce">
+    <ol>
+
+    <li>
+    Incontro a Te, incontro alla Parola,<br>
+    veniamo qui e grande è la tua casa:<br>
+    Tu mi hai chiamato qui, Tu mi aspettavi qui da sempre<br>
+    e sono qui e siamo qui, attratti da un amore<br>
+    fedele come solo Tu, Signore Dio.<br>
+    <br>
+    </li>
+
+    <b>
         Verremo a Te,<br>
         Padre della vita,<br>
         d'ogni uomo.<br>
         Verremo a Te,<br>
         Padre dell’amore,<br>
-        e della pace.</b><br>
-    </span></td>
-</table>
-<br>
+        e della pace.<br><br>
+    </b>
 
-<li>
-Incontro a Te, un Dio che si fa dono;<br>
-incontro a Te e già sei più vicino<br>
-e luce sei per noi nei giorni della nostra vita;<br>
-Tu cerchi noi, Tu proprio noi per ricondurre a Te<br>
-tutto l’amore pronunciato, verbo di Dio.<br>
-<br>
-</li>
+    <li>
+    Incontro a Te, un Dio che si fa dono;<br>
+    incontro a Te e già sei più vicino<br>
+    e luce sei per noi nei giorni della nostra vita;<br>
+    Tu cerchi noi, Tu proprio noi per ricondurre a Te<br>
+    tutto l’amore pronunciato, verbo di Dio.<br>
+    <br>
+    </li>
 
-<table>
-    <td style="width: 350px;"><span style="color:rgb(243, 64, 249)"><b>
-        Verremo a <span style="color:blue">^</span>Te, sorgente della vita,<br>
-        d’ogni uomo, d’ogni giorno,<br>
-        ogni cosa Padre l’hai voluta Tu.<br>
-        Verremo a <span style="color:blue">^</span>Te, Signore della gioia,<br>
-        dell’amore che si dona,<br>
-        di ogni cuore che l’amore attirerà.</span> </b><i>[su]</i><br><b>
-    </td>    
-    <td style="width: 250px;"><span style="color:blue"><b>
+    <b>
         Verremo a Te,<br>
         Padre della vita,<br>
         d'ogni uomo.<br>
         Verremo a Te,<br>
         Padre dell’amore,<br>
-        e della pace.</b><br>
-    </span></td>
-</table>
-<br>
+        e della pace.<br><br>
+    </b>
 
-<li>
-Crediamo in Te, crediamo alla Parola,<br>
-al figlio tuo Gesù nostro Signore,<br>
-uomo tra gli uomini, Dio salvatore della vita,<br>
-morto per noi, per noi risorto, per ricondurre a Te<br>
-tutto l’amore pronunciato, verbo di Dio.<br>
-<br>
-</li>
+    <li>
+    Crediamo in Te, crediamo alla Parola,<br>
+    al figlio tuo Gesù nostro Signore,<br>
+    uomo tra gli uomini, Dio salvatore della vita,<br>
+    morto per noi, per noi risorto, per ricondurre a Te<br>
+    tutto l’amore pronunciato, verbo di Dio.<br>
+    <br>
+    </li>
 
-<table>
-    <td style="width: 350px;"><span style="color:rgb(243, 64, 249)"><b>
-        Verremo a <span style="color:blue">^</span>Te, sorgente della vita,<br>
-        d’ogni uomo, d’ogni giorno,<br>
-        ogni cosa Padre l’hai voluta Tu.<br>
-        Verremo a <span style="color:blue">^</span>Te, Signore della gioia,<br>
-        dell’amore che si dona,<br>
-        di ogni cuore che l’amore attirerà.</span> </b><i>[giù]</i><br><b>
-    </td>    
-    <td style="width: 250px;"><span style="color:blue"><b>
+    <b>
         Verremo a Te,<br>
         Padre della vita,<br>
         d'ogni uomo.<br>
         Verremo a Te,<br>
         Padre dell’amore,<br>
-        e della pace.</b><br>
-    </span></td>
-</table>
+        e della pace.
+    </b>
 
+    </ol>
 
+</div>
 
-</ol>
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

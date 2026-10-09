@@ -1,88 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
-233.	Servo per amore <span style="color:green">- RE-</span><br>
+233.	Servo per amore<br>
 </h2>
-<i>
-    <span style="color:rgb(243, 64, 249)">soprani</span><br>
-    <span style="color:#AA0000">contralti</span><br>
-    <span style="color:green">altre voci</span><br>
-</i><br>
-<ol>
 
-<li>
-Una notte di sudore sulla barca in mezzo al mare<br>
-e, mentre il cielo si imbianca già, tu guardi le tue reti vuote.<br>
-Ma la voce che ti chiama un altro mare ti mostrerà<br>
-e sulle rive di ogni cuore le tue reti getterai.<br>
-<br>
-</li>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<table>
+<div id="soprani" class="voce">
 
-    <td style="width: 300px;"><span style="color:green">
-    <b>
-        Offri <span style="color:rgb(243, 64, 249)">^</span> la vita tua<br>
-        come Maria ai piedi della croce<br>
-        e sarai servo di ogni uomo,<br>
-        servo per amore,<br>
-        sacerdote dell’umanità.<br><br>
-    </b></span>
-    <li><span style="color:green">
-        Avanz<span style="color:#AA0000">^</span>avi nel silenzio<br>
-        fra le lacrime e speravi<br>
-        che il seme sparso davanti a te<br>
-        cadesse sulla buona terra.<br>
-        Ora il cuore tuo è in festa<br>
-        perché il grano biondeggia ormai,<br>
-        è maturato sotto il sole,<br>
-        puoi riporlo nei granai.<br>
-        <br></span>
+    <ol>
+
+    <li>
+        Una notte di sudore sulla barca in mezzo al mare<br>
+        e, mentre il cielo si imbianca già, tu guardi le tue reti vuote.<br>
+        Ma la voce che ti chiama un altro mare ti mostrerà<br>
+        e sulle rive di ogni cuore le tue reti getterai.<br>
+    <br>
     </li>
-    <b><span style="color:green">
-        Offri <span style="color:rgb(243, 64, 249)">^</span> la vita tua<br>
-        come Maria ai piedi della croce<br>
-        e sarai servo di ogni uomo,<br>
-        servo per amore,<br>
-        sacerdote dell’umanità.<br>
-    </b></span>
-</td>
 
-    <td style="width: 300px;">
-    <b><span style="color:rgb(243, 64, 249)">
-        Offri la vita tua,<br>
-        offri ai piedi della croce,<br>
-        servo, tu sarai, tu sarai<br>
-        servo per amore,<br>
-        sacerdote dell’umanità.<br></span>
-        <br>
+    <b>
+        Offri la vita tua,
+        offri ai piedi della croce,
+        servo, <br>tu sarai, tu sarai
+        servo per amore,
+        sacerdote dell’umanità.<br><br>
     </b>
-    <span style="color:#AA0000">
-        Offri<br>la vita tua<br>
-        come Maria<br>ai piedi della croce<br>
-        e sarai servo<br>di ogni uomo,<br>
-        servo per amore,<br>
-        sacerdote dell’umanità.<br>
-    </span>
-        <br>
-    <b><span style="color:rgb(243, 64, 249)">
-        Offri la vita tua,<br>
-        offri ai piedi della croce,<br>
-        servo, tu sarai, tu sarai<br>
-        servo per amore,<br>
-        sacerdote dell’umanità.<br></span>
+
+    <li>
+        Avanzavi nel silenzio
+        fra le lacrime e speravi<br>
+        che il seme sparso davanti a te
+        cadesse sulla buona terra.<br>
+        Ora il cuore tuo è in festa
+        perché il grano biondeggia ormai,<br>
+        è maturato sotto il sole,
+        puoi riporlo nei granai.<br><br>
+    </li>
+
+    <b>
+        Offri la vita tua,
+        offri ai piedi della croce,
+        servo, <br>tu sarai, tu sarai
+        servo per amore,
+        sacerdote dell’umanità.
     </b>
-</td>
+
+    </ol>
 
 
-</table>
+</div>
 
-</ol>
+
+<div id="contralti" class="voce">
+
+    <ol>
+
+    <li>
+        Una notte di sudore sulla barca in mezzo al mare<br>
+        e, mentre il cielo si imbianca già, tu guardi le tue reti vuote.<br>
+        Ma la voce che ti chiama un altro mare ti mostrerà<br>
+        e sulle rive di ogni cuore le tue reti getterai.<br>
+    <br>
+    </li>
+
+    <b>
+        Offri la vita tua
+        come Maria ai piedi della croce
+        e sarai <br>servo di ogni uomo,
+        servo per amore,
+        sacerdote dell’umanità.<br><br>
+    </b>
+
+    <li>
+        Offri la vita tua
+        come Maria ai piedi della croce
+        e sarai <br>servo di ogni uomo,
+        servo per amore,
+        sacerdote dell’umanità.<br><br>
+    </li>
+
+    <b>
+        Offri la vita tua
+        come Maria ai piedi della croce
+        e sarai <br>servo di ogni uomo,
+        servo per amore,
+        sacerdote dell’umanità.
+    </b>
+
+    </ol>
+
+
+</div>
+
+
+
+
+<div id="maschi" class="voce">
+
+
+    <ol>
+
+    <li>
+        Una notte di sudore sulla barca in mezzo al mare<br>
+        e, mentre il cielo si imbianca già, tu guardi le tue reti vuote.<br>
+        Ma la voce che ti chiama un altro mare ti mostrerà<br>
+        e sulle rive di ogni cuore le tue reti getterai.<br>
+    <br>
+    </li>
+
+    <b>
+        Offri la vita tua
+        come Maria ai piedi della croce
+        e sarai <br>servo di ogni uomo,
+        servo per amore,
+        sacerdote dell’umanità.<br><br>
+    </b>
+
+    <li>
+        Avanzavi nel silenzio
+        fra le lacrime e speravi<br>
+        che il seme sparso davanti a te
+        cadesse sulla buona terra.<br>
+        Ora il cuore tuo è in festa
+        perché il grano biondeggia ormai,<br>
+        è maturato sotto il sole,
+        puoi riporlo nei granai.<br><br>
+    </li>
+
+    <b>
+        Offri la vita tua
+        come Maria ai piedi della croce
+        e sarai <br>servo di ogni uomo,
+        servo per amore,
+        sacerdote dell’umanità.
+    </b>
+
+    </ol>
+
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

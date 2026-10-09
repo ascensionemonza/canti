@@ -1,98 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+<body>
 
 <h2>
 216.	Resurrezione<br>
 </h2>
-<i>si parte sempre su</i>
-<br><br>
-<ol>
-<li>
-Che gioia ci hai dato, Signore del cielo,<br>
-Signore del grande universo.<br>
-Che gioia ci hai dato vestito di luce,<br>
-vestito di gloria infinita;<br>
-vestito di gloria infinita.<br>
-<br>
-Vederti risorto, vederti Signore,<br>
-il cuore sta per impazzire.<br>
-Tu sei ritornato, Tu sei qui fra noi<br>
-e adesso ti avremo per sempre;<br>
-e adesso ti avremo per sempre.<br>
-</li>
-<br>
-<li>
-Chi cercate donne quaggiù?<br>
-Chi cercate donne quaggiù?<br>
-Quello che era morto non è qui:<br>
-è risorto, sì,<br>
-come aveva detto anche a voi.<br>
-Voi gridate a tutti che<br>
-è risorto Lui,<br>
-tutti che è risorto Lui.<br>
-<br>
-Tu hai vinto il mondo Gesù,<br>
-Tu hai vinto il mondo Gesù,<br>
-liberiamo la felicità.<br>
-E la morte no, non esiste più,<br>
-l’hai vinta Tu<br>
-hai salvato tutti noi, uomini con Te,<br>
-tutti noi, uomini con Te.<br>
-</li>
-<br>
-<table>
-    <td style="width:300px;">
-        <li>
-            <span style="color:rgb(243, 64, 249)">
-                Che gio<span style="color:blue">^</span>ia ci hai dato,<br>
-                Signore del cielo,<br>
-                Signore del grande universo.<br>
-                Che gioia ci hai dato<br>
-                vestito di luce,<br>
-                vestito di gloria infinita;<br>
-                vestito di gloria infinita.<br>
-                <br>
-                Veder<span style="color:blue">^</span>ti risorto,<br>
-                vederti Signore,<br>
-                il cuore sta per impazzire.<br>
-                Tu sei ritornato,<br>
-                Tu sei qui fra noi<br>
-                e adesso ti avremo per sempre;<br>
-                e adesso ti avremo per sempre.<br>
-                ...<br>
-                ...<br>
-                ^Che gioia ci hai dato,<br>
-                ti avremo per sempre.<br>
-            </span>
-        </li>
-    </td>
-    <td style="width:400px;">
-        <span style="color:blue">
-            Chi cercate donne quaggiù?<br>
-            Chi cercate donne quaggiù?<br>
-            Quello che era morto non è qui:<br>
-            è risorto, sì, come aveva detto anche a voi.
-            <br>Voi gridate a tutti che<br>
-            è risorto Lui, tutti che<br>
-            è risorto Lui.<br>
-            <br>
-            Tu hai vinto il mondo Gesù,<br>
-            Tu hai vinto il mondo Gesù,<br>
-            liberiamo la felicità.<br>
-            E la morte no, non esiste più, l’hai vinta Tu<br>
-            hai salvato tutti noi,<br>
-            uomini con Te,<br>
-            tutti noi, uomini con Te,<br>
-            uomini con Te,<br>
-            uomini con Te-e<br><span style="color:rgb(243, 64, 249)">^</span>-e-e<br>-e-e-e.<br>
-        </span>
-    </td>
-</table>
-</ol>
+
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+        
+    <ol>
+    <li>
+    Che gioia ci hai dato, Signore del cielo,<br>
+    Signore del grande universo.<br>
+    Che gioia ci hai dato vestito di luce,<br>
+    vestito di gloria infinita;<br>
+    vestito di gloria infinita.<br>
+    <br>
+    Vederti risorto, vederti Signore,<br>
+    il cuore sta per impazzire.<br>
+    Tu sei ritornato, Tu sei qui fra noi<br>
+    e adesso ti avremo per sempre;<br>
+    e adesso ti avremo per sempre.<br>
+    </li>
+    <br>
+    <li>
+    Chi cercate donne quaggiù?<br>
+    Chi cercate donne quaggiù?<br>
+    Quello che era morto non è qui:<br>
+    è risorto, sì,<br>
+    come aveva detto anche a voi.<br>
+    Voi gridate a tutti che<br>
+    è risorto Lui,<br>
+    tutti che è risorto Lui.<br>
+    <br>
+    Tu hai vinto il mondo Gesù,<br>
+    Tu hai vinto il mondo Gesù,<br>
+    liberiamo la felicità.<br>
+    E la morte no, non esiste più,<br>
+    l’hai vinta Tu<br>
+    hai salvato tutti noi, uomini con Te,<br>
+    tutti noi, uomini con Te.<br>
+    </li>
+    <br>
+    <li>
+    Che gioia ci hai dato, Signore del cielo,<br>
+    Signore del grande universo.<br>
+    Che gioia ci hai dato vestito di luce,<br>
+    vestito di gloria infinita;<br>
+    vestito di gloria infinita.<br>
+    <br>
+    Vederti risorto, vederti Signore,<br>
+    il cuore sta per impazzire.<br>
+    Tu sei ritornato, Tu sei qui fra noi<br>
+    e adesso ti avremo per sempre;<br>
+    e adesso ti avremo per sempre.<br><br>
+    </li>
+    Che gioia ci hai dato,<br>
+    ti avremo per sempre.
+    
+    </ol>
+
+</div>
+
+<div id="maschi" class="voce">
+        
+    <ol>
+    <li>
+    Che gioia ci hai dato, Signore del cielo,<br>
+    Signore del grande universo.<br>
+    Che gioia ci hai dato vestito di luce,<br>
+    vestito di gloria infinita;<br>
+    vestito di gloria infinita.<br>
+    <br>
+    Vederti risorto, vederti Signore,<br>
+    il cuore sta per impazzire.<br>
+    Tu sei ritornato, Tu sei qui fra noi<br>
+    e adesso ti avremo per sempre;<br>
+    e adesso ti avremo per sempre.<br>
+    </li>
+    <br>
+    <li>
+    Chi cercate donne quaggiù?<br>
+    Chi cercate donne quaggiù?<br>
+    Quello che era morto non è qui:<br>
+    è risorto, sì,<br>
+    come aveva detto anche a voi.<br>
+    Voi gridate a tutti che<br>
+    è risorto Lui,<br>
+    tutti che è risorto Lui.<br>
+    <br>
+    Tu hai vinto il mondo Gesù,<br>
+    Tu hai vinto il mondo Gesù,<br>
+    liberiamo la felicità.<br>
+    E la morte no, non esiste più,<br>
+    l’hai vinta Tu<br>
+    hai salvato tutti noi, uomini con Te,<br>
+    tutti noi, uomini con Te.<br>
+    </li>
+    <br>
+    Chi cercate donne quaggiù?<br>
+    Chi cercate donne quaggiù?<br>
+    Quello che era morto non è qui:<br>
+    è risorto, sì,<br>
+    come aveva detto anche a voi.<br>
+    Voi gridate a tutti che<br>
+    è risorto Lui,<br>
+    tutti che è risorto Lui.<br>
+    <br>
+    Tu hai vinto il mondo Gesù,<br>
+    Tu hai vinto il mondo Gesù,<br>
+    liberiamo la felicità.<br>
+    E la morte no, non esiste più,<br>
+    l’hai vinta Tu<br>
+    hai salvato tutti noi, uomini con Te,<br>
+    tutti noi, uomini con Te.<br><br>
+    </li>
+    Uomini con Te, uomini con Te.
+    </ol>
+
+</div>
+
+
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

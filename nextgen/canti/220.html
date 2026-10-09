@@ -1,57 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
-<h2>
-220.	Salmo 8 <span style="color:green">- MI-</span><br>
-</h2>
-<i>
-        <span style="color:#AA0000">contralti 2<sup>a</sup> voce</span>
-</i>
-<br><br>
-<table style="width:450px;"><td>
-<b><span style="color:rgb(243, 64, 249)">
-Se guardo <span style="color:blue">^</span> il cielo,<br>la luna e le stelle,<br>
-opere che Tu con le dita<br>hai modellato,<br>
-che cosa è<br>perché te ne curi,<br>
-che cosa è<br>perché te ne ricordi?<br></b></span>
-</td>
-<td><b><span style="color:blue">
-Se guardo il cielo,<br>guardo le stelle,<br>
-opere che le tue<br>dita han modellato,<br>
-che cosa è mai<br>perché te ne curi,<br>
-che cosa è<br>mai ricordi?<br>
-</span></b></td>
-</table>
-<b><span style="color:green">
-L’uomo, l’uomo, l’uomo.<br></span>
-<br>
-</b>
-Eppure l’hai fatto poco meno degli angeli,<br>
-di gloria e di onore lo hai coronato,<br>
-gli hai dato potere sulle opere delle tue mani,<br>
-su tutte le cose che Tu avevi creato:<br>
-<span style="color:#AA0000">
-gli uccelli del cielo, i pesci del mare,<br>
-le greggi e gli armenti, gli animali della campagna.<br></span>
-<br>
-<table style="width:450px;"><td>
-<b><span style="color:rgb(243, 64, 249)">
-Se guardo <span style="color:blue">^</span> il cielo,<br>la luna e le stelle,<br>
-opere che Tu con le dita<br>hai modellato,<br>
-che cosa è<br>perché te ne curi,<br>
-che cosa è<br>perché te ne ricordi?<br></b></span>
-</td>
-<td><b><span style="color:blue">
-Se guardo il cielo,<br>guardo le stelle,<br>
-opere che le tue<br>dita han modellato,<br>
-che cosa è mai<br>perché te ne curi,<br>
-che cosa è<br>mai ricordi?<br>
-</span></b></td>
-</table>
-<b><span style="color:green">
-L’uomo, l’uomo, l’uomo.<br></span>
-<br>
-</b>
+</head>
+<body>
 
+<h2>
+220.	Salmo 8
+</h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+        <b>
+        Se guardo il cielo, la luna e le stelle,<br>
+        opere che Tu con le dita hai modellato,<br>
+        che cosa è perché te ne curi,<br>
+        che cosa è perché te ne ricordi?<br>
+        L’uomo, l’uomo, l’uomo.<br>
+        <br>
+        </b>
+        Eppure l’hai fatto poco meno degli angeli,<br>
+        di gloria e di onore lo hai coronato,<br>
+        gli hai dato potere sulle opere delle tue mani,<br>
+        su tutte le cose che Tu avevi creato:<br>
+        gli uccelli del cielo, i pesci del mare,<br>
+        le greggi e gli armenti, gli animali della campagna.<br>
+        <br>
+        <b>
+        Se guardo il cielo, la luna e le stelle,<br>
+        opere che Tu con le dita hai modellato,<br>
+        che cosa è perché te ne curi,<br>
+        che cosa è perché te ne ricordi?<br>
+        L’uomo, l’uomo, l’uomo.
+        </b>
+
+
+</div>
+
+<div id="maschi" class="voce">
+        <b>
+        Se guardo il cielo, guardo le stelle,<br>
+        opere che le tue dita han modellato,<br>
+        che cosa è mai perché te ne curi,<br>
+        che cosa è mai ricordi?<br>
+        L’uomo, l’uomo, l’uomo.<br>
+        <br>
+        </b>
+        Eppure l’hai fatto poco meno degli angeli,<br>
+        di gloria e di onore lo hai coronato,<br>
+        gli hai dato potere sulle opere delle tue mani,<br>
+        su tutte le cose che Tu avevi creato:<br>
+        gli uccelli del cielo, i pesci del mare,<br>
+        le greggi e gli armenti, gli animali della campagna.<br>
+        <br>
+        <b>
+        Se guardo il cielo, guardo le stelle,<br>
+        opere che le tue dita han modellato,<br>
+        che cosa è mai perché te ne curi,<br>
+        che cosa è mai ricordi?<br>
+        L’uomo, l’uomo, l’uomo.
+        </b>
+
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

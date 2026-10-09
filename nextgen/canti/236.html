@@ -1,50 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+
+<body>
 <h2>
 236.	Signore nostra forza<br>
 </h2>
-<ol>
 
-<li><span style="color:rgb(243, 64, 249)">
-È la voce del mondo come gemito lieve<br>
-che ripete da sempre il suo inno alla pace.<br></span><span style="color:blue">
-È la voce dell’uomo tra fatiche e silenzi<br>
-che ricerca un rifugio in sentieri lontani.<br></span>
-<br>
-Ma un giorno - di memoria e stupore<br><span style="color:green">
-la Parola è presente, si fa corpo di Figlio;<br></span>
-nessuno - lo credeva davvero<br><span style="color:green">
-ed invece per tutti un annuncio d’amore.<br></span>
-<br>
-</li>
-<b>
-Signore nostra forza, sapienza d’ogni tempo<br>
-illumina la strada, ricolmaci di gioia.<br>
-Signore nostra forza, fratello d’ogni istante,<br>
-salvezza offerta all’uomo insegnaci ad amare.<br>
-<br>
-</b>
-<li><span style="color:rgb(243, 64, 249)">
-È lo Spirito vivo all’inizio dei tempi<br>
-che diffuse la luce sulle terre infinite.<br></span><span style="color:blue">
-È l’amore del Padre nella storia più antica<br>
-che divenne promessa sconfiggendo il peccato.<br></span>
-<br>
-Quel gesto, - indicibile dono,<br><span style="color:green">
-d’immolarsi per tutti, di donare la vita;<br></span>
-quel gesto - ci accompagna per sempre,<br><span style="color:green">
-è sorgente perenne di speranza e di amore.<br></span>
-<br>
-</li>
-<b>
-Signore nostra forza, sapienza d’ogni tempo<br>
-illumina la strada, ricolmaci di gioia.<br>
-Signore nostra forza, fratello d’ogni istante,<br>
-salvezza offerta all’uomo insegnaci ad amare.<br>
-</b>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+    <ol>
+
+    <li>
+    È la voce del mondo come gemito lieve<br>
+    che ripete da sempre il suo inno alla pace.<br><span class="verde">
+    È la voce dell’uomo tra fatiche e silenzi<br>
+    che ricerca un rifugio in sentieri lontani.<br></span>
+    <br>
+    Ma un giorno di memoria e stupore<br>
+    la Parola è presente, si fa corpo di Figlio;<br>
+    nessuno lo credeva davvero<br>
+    ed invece per tutti un annuncio d’amore.<br>
+    <br>
+    </li>
+    <b>
+    Signore nostra forza, sapienza d’ogni tempo<br>
+    illumina la strada, ricolmaci di gioia.<br>
+    Signore nostra forza, fratello d’ogni istante,<br>
+    salvezza offerta all’uomo insegnaci ad amare.<br>
+    <br>
+    </b>
+    <li>
+    È lo Spirito vivo all’inizio dei tempi<br>
+    che diffuse la luce sulle terre infinite.<br><span class="verde">
+    È l’amore del Padre nella storia più antica<br>
+    che divenne promessa sconfiggendo il peccato.<br></span>
+    <br>
+    Quel gesto, indicibile dono,<br>
+    d’immolarsi per tutti, di donare la vita;<br>
+    quel gesto ci accompagna per sempre,<br>
+    è sorgente perenne di speranza e di amore.<br>
+    <br>
+    </li>
+    <b>
+    Signore nostra forza, sapienza d’ogni tempo<br>
+    illumina la strada, ricolmaci di gioia.<br>
+    Signore nostra forza, fratello d’ogni istante,<br>
+    salvezza offerta all’uomo insegnaci ad amare.
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+<div id="maschi" class="voce">
+    <ol>
+
+    <li><span class="verde">
+    È la voce del mondo come gemito lieve<br>
+    che ripete da sempre il suo inno alla pace.<br></span>
+    È la voce dell’uomo tra fatiche e silenzi<br>
+    che ricerca un rifugio in sentieri lontani.<br>
+    <br>
+    Ma un giorno di memoria e stupore<br>
+    la Parola è presente, si fa corpo di Figlio;<br>
+    nessuno lo credeva davvero<br>
+    ed invece per tutti un annuncio d’amore.<br>
+    <br>
+    </li>
+    <b>
+    Signore nostra forza, sapienza d’ogni tempo<br>
+    illumina la strada, ricolmaci di gioia.<br>
+    Signore nostra forza, fratello d’ogni istante,<br>
+    salvezza offerta all’uomo insegnaci ad amare.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    È lo Spirito vivo all’inizio dei tempi<br>
+    che diffuse la luce sulle terre infinite.<br></span>
+    È l’amore del Padre nella storia più antica<br>
+    che divenne promessa sconfiggendo il peccato.<br>
+    <br>
+    Quel gesto, indicibile dono,<br>
+    d’immolarsi per tutti, di donare la vita;<br>
+    quel gesto ci accompagna per sempre,<br>
+    è sorgente perenne di speranza e di amore.<br>
+    <br>
+    </li>
+    <b>
+    Signore nostra forza, sapienza d’ogni tempo<br>
+    illumina la strada, ricolmaci di gioia.<br>
+    Signore nostra forza, fratello d’ogni istante,<br>
+    salvezza offerta all’uomo insegnaci ad amare.
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

@@ -1,59 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
 
+</head>
+<body>
+
+
 <h2>
-210.	Re dei re <span style="color:green">- MI-</span><br>
+210.	Re dei re<br>
 </h2>
 
-<i>
-    <span style="color:green">4 voci</span><br>
-    <span style="color:rgb(117, 195, 10)">3 voci (soprani, contralti, voci maschili)</span>
-</i><br><br>
 
-<ol>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li>
-Hai sollevato i nostri volti dalla polvere,<br>
-le nostre colpe hai portato su di Te,<br>
-Signore ti sei fatto uomo in tutto come noi per amore.<br>
-<br>
-<i>[musica?]<br></i>
-</li>
-<b><span style="color:green">
-Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
-Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
-Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
-Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br></span>
-</b>
-<li>
-Ci hai riscattati dalla stretta delle tenebre<br>
-perché potessimo glorificare Te,<br>
-hai riversato in noi la vita del tuo Spirito per amore.<br>
-<br>
-</li>
-<b><span style="color:green">
-Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
-Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
-Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
-Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br></span>
-</b>
-<li>
-<span style="color:blue">Tua è la gloria per sempre.</span><br>
-<span style="color:rgb(117, 195, 10)">Tua è la gloria per sempre.</span><br>
-<span style="color:rgb(243, 64, 249)">Gloria</span>, <span style="color:rgb(117, 195, 10)">gloria</span>!<br>
-<span style="color:rgb(243, 64, 249)">Gloria</span>, <span style="color:rgb(117, 195, 10)">gloria</span>!<br>
-<br>
-</li>
-<i>[no musica, o solo accordi separati]</i><br>
-<b><span style="color:green">
-Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
-Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br></span>
-</b><i>[riprende la musica]</i><br><b><span style="color:green">
-Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
-Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br>
-</b></span>
+<div id="femmine" class="voce">
+    <ol>
+        
+    <li>
+    Hai sollevato i nostri volti dalla polvere,<br>
+    le nostre colpe hai portato su di Te,<br>
+    Signore ti sei fatto uomo in tutto come noi per amore.<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br>
+    </b>
+    <li>
+    Ci hai riscattati dalla stretta delle tenebre<br>
+    perché potessimo glorificare Te,<br>
+    hai riversato in noi la vita del tuo Spirito per amore.<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br>
+    </b>
+    <li>
+    <span class="verde">Tua è la gloria per sempre.</span> Tua è la gloria per sempre.<br>
+    Gloria, gloria! Gloria, gloria!<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+<div id="maschi" class="voce">
+    <ol>
+        
+    <li>
+    Hai sollevato i nostri volti dalla polvere,<br>
+    le nostre colpe hai portato su di Te,<br>
+    Signore ti sei fatto uomo in tutto come noi per amore.<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br>
+    </b>
+    <li>
+    Ci hai riscattati dalla stretta delle tenebre<br>
+    perché potessimo glorificare Te,<br>
+    hai riversato in noi la vita del tuo Spirito per amore.<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.<br><br>
+    </b>
+    <li>
+    Tua è la gloria per sempre. Tua è la gloria per sempre.<br>
+    <span class="verde">Gloria,</span> gloria! <span class="verde">Gloria,</span> gloria!<br>
+    <br>
+    </li>
+    <b>
+    Figlio dell’Altissimo, povero tra i poveri, vieni a dimorare tra noi.<br>
+    Dio dell’impossibile, Re di tutti i secoli, vieni nella tua maestà.<br>
+    Re dei re, i popoli ti acclamano, i cieli ti proclamano Re dei re.<br>
+    Luce degli uomini, regna col tuo amore tra noi, noi, noi, noi.
+    </b>
+
+
+    </ol>
+
+</div>
+
+
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

@@ -1,60 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+
+<body>
 
 <h2>
 240.	Su ali d’aquila (Salmo 90)<br>
 </h2>
-<ol>
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
 
-<li><span style="color:rgb(243, 64, 249)">
-Tu che abiti al riparo del Signore<br>e che dimori alla sua ombra<br>
-di’ al Signore: “Mio rifugio,<br>mia roccia in cui confido”.<br></span>
-<br>
-</li>
-<b>
-E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
-sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
-così nelle sue mani vivrai.<br>
-<br>
-</b>
-<li><span style="color:blue">
-Dal laccio del cacciatore ti libererà<br>e dalla carestia che distrugge;<br>
-poi ti coprirà con le sue ali<br>e rifugio troverai.<br></span>
-<br>
-</li>
-<b>
-E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
-sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
-così nelle sue mani vivrai.<br>
-<br>
-</b>
-<li><span style="color:rgb(243, 64, 249)">
-Non devi temere i terrori della notte,<br>né freccia che vola di giorno:<br>
-mille cadranno al tuo fianco<br>ma nulla ti colpirà.<br></span>
-<br>
-</li>
-<b>
-E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
-sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
-così nelle sue mani vivrai.<br>
-<br>
-</b>
-<li><span style="color:blue">
-Perché ai suoi angeli ha dato un comando<br>di preservarti in tutte le tue vie:<br>
-ti porteranno sulle loro mani,<br>contro la pietra non inciamperai.<br></span>
-<br>
-</li>
-<b><span style="color:rgb(243, 64, 249)">
-E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
-sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
-così nelle sue ma-<span style="color:blue">^</span>ni vivrai.<br></span>
-<br><span style="color:blue">
-^E ti rialzerò, ti solleverò,<br>su ali d’aquila ti reggerò,<br>
-sulla brezza dell’alba ti farò brillar<br>come il sole:<br>
-così nelle mie mani vivrai.<br></span>
-</b>
+<div id="femmine" class="voce">
+
+    <ol>
+
+    <li>
+    Tu che abiti al riparo del Signore<br>e che dimori alla sua ombra<br>
+    di’ al Signore: “Mio rifugio,<br>mia roccia in cui confido”.<br>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    Dal laccio del cacciatore ti libererà<br>e dalla carestia che distrugge;<br>
+    poi ti coprirà con le sue ali<br>e rifugio troverai.<br></span>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li>
+    Non devi temere i terrori della notte,<br>né freccia che vola di giorno:<br>
+    mille cadranno al tuo fianco<br>ma nulla ti colpirà.<br>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    Perché ai suoi angeli ha dato un comando<br>di preservarti in tutte le tue vie:<br>
+    ti porteranno sulle loro mani,<br>contro la pietra non inciamperai.<br></span>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br><span class="verde">
+    E ti rialzerò, ti solleverò,<br>su ali d’aquila ti reggerò,<br>
+    sulla brezza dell’alba ti farò brillar<br>come il sole:<br></span>
+    così nelle mie mani vivrai.
+    </b>
 
 
-</ol>
+    </ol>
+
+
+</div>
+
+
+<div id="maschi" class="voce">
+
+    <ol>
+
+    <li><span class="verde">
+    Tu che abiti al riparo del Signore<br>e che dimori alla sua ombra<br>
+    di’ al Signore: “Mio rifugio,<br>mia roccia in cui confido”.<br></span>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li>
+    Dal laccio del cacciatore ti libererà<br>e dalla carestia che distrugge;<br>
+    poi ti coprirà con le sue ali<br>e rifugio troverai.<br>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li><span class="verde">
+    Non devi temere i terrori della notte,<br>né freccia che vola di giorno:<br>
+    mille cadranno al tuo fianco<br>ma nulla ti colpirà.<br></span>
+    <br>
+    </li>
+    <b>
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue mani vivrai.<br>
+    <br>
+    </b>
+    <li>
+    Perché ai suoi angeli ha dato un comando<br>di preservarti in tutte le tue vie:<br>
+    ti porteranno sulle loro mani,<br>contro la pietra non inciamperai.<br>
+    <br>
+    </li>
+    <b><span class="verde">
+    E ti rialzerà, ti solleverà,<br>su ali d’aquila ti reggerà,<br>
+    sulla brezza dell’alba ti farà brillar<br>come il sole:<br>
+    così nelle sue ma(ni vivrai.)<br></span>
+    <br>
+    E ti rialzerò, ti solleverò,<br>su ali d’aquila ti reggerò,<br>
+    sulla brezza dell’alba ti farò brillar<br>come il sole:<br>
+    così nelle mie mani vivrai.
+    </b>
+
+
+    </ol>
+
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>

@@ -1,55 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, Helvetica, sans-serif }
-table {
-border-collapse:collapse
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
 }
-td, th {
-border:0px solid white; width: 100px; font-family: Arial, Helvetica, sans-serif }
+
+/* --- BOTTONI DELLE VOCI --- */
+
+.voceBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.voceBox a {
+    display: block;
+    padding: 10px 6px;
+    text-align: center;
+    font-style: italic;
+    color: #00b300; /* rosso scuro */
+    border: 2px solid #00b300;
+    text-decoration: none;
+    border-radius: 112px; /* molto arrotondato */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voceBox a:hover {
+    background-color: #BF8F00; /* verde */
+    color: white;
+}
+.voceBox a.attivo {
+    color: black;
+    font-style: normal;
+    border: 2px solid #BF8F00;
+}  
+/* --- SEZIONI DELLE VOCI --- */
+
+.voce {
+    display: none; /* tutte nascoste di default */
+    margin-top: 30px;
+}
+
+.voce h2 {
+    margin-bottom: 10px;
+}
+
+.testo-voce {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.nero { color: black; }
+.verde { color: #00b300; font-style: italic; }
+
 </style>
+
+</head>
+<body>
 <h2>
 215.	Resto con Te<br>
 </h2>
+
+<!-- BOTTONI DELLE 4 VOCI -->
+<div class="voceBox">
+    <a data-voce="soprani" onclick="selezionaVoce('soprani')">Soprani</a>
+    <a data-voce="contralti" onclick="selezionaVoce('contralti')">Contralti</a>
+    <a data-voce="tenori" onclick="selezionaVoce('tenori')">Tenori</a>
+    <a data-voce="bassi" onclick="selezionaVoce('bassi')">Bassi</a>
+</div>
+
+<div id="femmine" class="voce">
+
 <ol>
 
-<li>
-Seme gettato nel mondo, Figlio donato alla terra,<br>
-il tuo silenzio custodirò.<br>
-In ciò che vive e che muore vedo il tuo volto d’amore:<br>
-sei il mio Signore e sei il mio Dio.<br>
-<br>
-</li>
-<b>
-Io lo so che Tu sfidi la mia morte,<br>io lo so che Tu abiti il mio buio.<br>
-Nell’attesa del giorno che verrà<br>resto con Té - - - - .<br>
-<br>
-</b>
-<li>
-Nube di mandorlo in fiore dentro gli inverni del cuore<br>
-è questo pane che Tu ci dai.<br>
-Vena di cielo profondo dentro le notti del mondo<br>
-è questo vino che Tu ci dai.<br>
-<br>
-</li>
-<b>
-Io lo so che Tu sfidi la mia morte,<br>io lo so che Tu abiti il mio buio.<br>
-Nell’attesa del giorno che verrà<br>resto con Té - - - - .<br>
-<br>
-<table>
-    <td style="width:270px;"><span style="color:rgb(243, 64, 249)">
-        Tu sei <span style="color:blue">^</span>Re<br>di stellate immensità<span style="color:blue">^</span><br>
-        e <span style="color:green">^sei Tu<br>il futuro</span> che ver<span style="color:blue">^</span>rà,<br>
-        sei l’amore<br>che muove ogni realtà<br>
-        e Tu sei</span> <span style="color:green">^qui - - - - :<br>resto con Té - - - -.<br></span>
-    </td>
-    <td style="width:220px;"><span style="color:blue">
-        <span style="color:blue">^</span>Tu sei Re<br><span style="color:blue">^</span>immensità<br>
-        <span style="color:green">^sei Tu<br>il futuro </span><span style="color:blue">^</span>che verrà<br>
-        ...à...<br>...à...;<br>
-        [...]</span> <span style="color:green">^qui - - - - :<br>resto con Té - - - -.<br></span>
-    </td>
-</table>
-</b>
+    <li>
+    Seme gettato nel mondo, Figlio donato alla terra,<br>
+    il tuo silenzio custodirò. In ciò che vive e che muore<br>
+    vedo il tuo volto d’amore: sei il mio Signore e sei il mio Dio.<br>
+    <br>
+    </li>
+    <b>
+    Io lo so che Tu sfidi la mia morte, io lo so che Tu abiti il mio buio.<br>
+    Nell’attesa del giorno che verrà resto con Te.<br>
+    <br>
+    </b>
+    <li>
+    Nube di mandorlo in fiore dentro gli inverni del cuore<br>
+    è questo pane che Tu ci dai.<br>
+    Vena di cielo profondo dentro le notti del mondo<br>
+    è questo vino che Tu ci dai.<br>
+    <br>
+    </li>
+    <b>
+    Io lo so che Tu sfidi la mia morte, io lo so che Tu abiti il mio buio.<br>
+    Nell’attesa del giorno che verrà resto con Te.<br>
+    <br>
+    Tu sei Re di stellate immensità e sei Tu il futuro che verrà,<br>
+    sei l’amore che muove ogni realtà e Tu sei qui: resto con Te.
+    </b>
 
 
-</ol>
+    </ol>
+
+</div>
+
+
+<div id="maschi" class="voce">
+
+<ol>
+
+    <li>
+    Seme gettato nel mondo, Figlio donato alla terra,<br>
+    il tuo silenzio custodirò. In ciò che vive e che muore<br>
+    vedo il tuo volto d’amore: sei il mio Signore e sei il mio Dio.<br>
+    <br>
+    </li>
+    <b>
+    Io lo so che Tu sfidi la mia morte, io lo so che Tu abiti il mio buio.<br>
+    Nell’attesa del giorno che verrà resto con Te.<br>
+    <br>
+    </b>
+    <li>
+    Nube di mandorlo in fiore dentro gli inverni del cuore<br>
+    è questo pane che Tu ci dai.<br>
+    Vena di cielo profondo dentro le notti del mondo<br>
+    è questo vino che Tu ci dai.<br>
+    <br>
+    </li>
+    <b>
+    Io lo so che Tu sfidi la mia morte, io lo so che Tu abiti il mio buio.<br>
+    Nell’attesa del giorno che verrà resto con Te.<br>
+    <br>
+    Tu sei Re ... immensità, sei Tu il futuro che verrà...<br>
+    ... qui: resto con Te.
+    </b>
+
+
+    </ol>
+
+</div>
+
+<script>
+function mostraVoce(voce) {
+
+    // Alias: queste voci mostrano sempre "altri"
+    const alias = {
+        soprani: "femmine",
+        contralti: "femmine",
+        tenori: "maschi",
+        bassi: "maschi"
+    };
+
+    const voceReale = alias[voce] || voce;
+
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.voce').forEach(v => v.style.display = 'none');
+
+    // Mostra quella selezionata
+    const target = document.getElementById(voceReale);
+    if (target) target.style.display = 'block';
+
+    // Evidenziazione bottoni
+    document.querySelectorAll(".voceBox a").forEach(btn => {
+        btn.classList.remove("attivo");
+    });
+
+    // Evidenzia il bottone cliccato
+    const btnAttivo = document.querySelector(
+        `.voceBox a[data-voce="${voce}"]`
+    );
+    if (btnAttivo) btnAttivo.classList.add("attivo");
+}
+
+function selezionaVoce(voce) {
+    localStorage.setItem('vocePreferita', voce);
+    mostraVoce(voce);
+}
+
+window.onload = function() {
+    let voceSalvata = localStorage.getItem('vocePreferita');
+    if (voceSalvata) mostraVoce(voceSalvata);
+};
+</script>
+
+</body>
+</html>
